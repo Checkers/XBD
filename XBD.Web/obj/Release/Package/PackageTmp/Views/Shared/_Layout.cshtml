@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+@{
+    var w = XBD.Web.Utilities.WebInfo.GetWebInfo();
+    var conf = System.Configuration.ConfigurationManager.AppSettings["WebTypeCode"];
+    var list = new XBD.Service.CategorySvc().GetWebTypeByCodeName(conf);
+    var listCus = new XBD.Service.CustomerSvc().PageList(1, int.MaxValue, conf);
+    var listNav = new XBD.Service.CategorySvc().GetWebTypeByCodeName(conf).Take(6);
+    w.ScriptCode = string.IsNullOrEmpty(w.ScriptCode) ? "" : w.ScriptCode;
+}
+<html>
+<head>
+    <title>@ViewBag.Title - 辛必达</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="@(ViewBag.KeyWord??w.KeyWord)" />
+    <meta name="description" content="@(ViewBag.Description??w.Descript)" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Areas/Admin/Content/mac-Bootstrap/style/font-awesome.css" rel="stylesheet" />
+    <link href="~/fonts/iconfont.css" rel="stylesheet" />
+</head>
+<body>
+    <header all-header>
+        <div class="container hd-container">
+            <a hd-logo href="/"></a>
+            <div hd-search>
+                <div>
+                    <input id="SearchTxt" placeholder="危险化学品查询" hd-searchbox />
+                    <span hd-searchbtn onclick="query()" class="glyphicon glyphicon-search"></span>
+                </div>
+                <div hd-contact>
+                    <span class="glyphicon glyphicon-earphone"></span> @w.TelCall.Split('、')[0]
+                </div>
+
+            </div>
+            <ul hd-nav>
+
+                @foreach (var item in list)
+                {
+                    <li><a href="@item.Link">@item.Name</a></li>
+                }
+            </ul>
+        </div>
+    </header>
+    @RenderBody()
+    <div our-custom>
+        <div class="container" style="overflow:hidden;">
+            <div home-title>我们的客户 & Customs</div>
+            <div customs-div id="customs-list">
+                @foreach (var item in listCus.Rows)
+                {
+                    <a custom-link id="@item.Id" href="javascript:void(0)" target="_blank">
+                        <img src="@(item.ImgUrl+"")" title="@(item.Name+"")" />
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div foot-div class="container">
+
+            <div foot-mid>
+                <img foot-pain-img src="@w.QRCode" />
+                <div foot-pain>
+                    <p><span>@w.SiteName</span></p>
+                    <p><span>咨询热线：</span>@w.TelCall</p>
+                    <p><span>应急电话：</span>@w.UserPhone1 、@w.UserPhone2</p>
+                    <p><span>地址：</span>@w.Address <a href="/about">[查看地图]</a></p>
+                </div>
+            </div>
+            <div foot-links>
+                <b>我们的服务 </b>
+                @foreach (var item in listNav)
+                {
+                    if (item.Name == "首页") { continue; }
+                    <a href="@item.Link">@(item.Name)</a> 
+                    if(item.Name!=listNav.Last().Name)
+                    {<span> | </span>}
+                }
+            </div>
+            
+            <div foot-copyright>
+                版权所有：@w.CopyRight
+            </div>
+        </div>
+    </div>
+    <div g-contact>
+        <a id="toTop" class="gc-span">
+            <i class="icon iconfont">&#xe61f;</i>
+        </a>
+        <a id="showHome" href="/" class="gc-span">
+            <i class="icon iconfont">&#xf0055;</i>
+        </a>
+        <a id="showQQ" href="http://wpa.qq.com/msgrd?v=3&uin=@(w.QQ)&site=qq&menu=yes" class="gc-span">
+            <i class="icon iconfont">&#xe631;</i>
+        </a>
+        <a id="showPhone" class="gc-span">
+            <i class="icon iconfont">&#xe63f;</i>
+        </a>
+        <a id="showQr" class="gc-span">
+            <i class="icon iconfont">&#xe608;</i>
+        </a>
+        <span showinghome><i class="icon iconfont">&#xf0055;</i> 回到首页</span>
+        <span showingqq><i class="icon iconfont">&#xe631;</i> 联系我们</span>
+        <span showingphone><i class="icon iconfont">&#xe63f;</i> @w.TelCall.Split('、')[0]</span>
+        <span showingqr><img foot-pain-img="big" src="@w.QRCode" /></span>
+    </div>
+
+    <div jimgviewer2>
+        <div jimgviewer2-c curshow="0">
+            <img jimgviewer2-img src="/Areas/Admin/Content/editor/net/upload/caseimgs/130974958939520005_1101.jpg" alt="Alternate Text" />
+            <div jimgviewer2-f>
+                常州中国大明富集团
+            </div>
+            <div jimgviewer2-left title="上一张" onclick="prve2()"></div>
+            <img jimgviewer2-left-img onclick="prve2()" src="~/Content/image/left.png" />
+            <div jimgviewer2-right title="下一张" onclick="next2()"></div>
+            <img jimgviewer2-right-img onclick="next2()" src="~/Content/image/right.png" />
+            <div jimgviewer2-close title="关闭" onclick="hides2()">×</div>
+        </div>
+    </div>
+    <div jimgviewer2-cover></div>
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/slide/js/jquery.flexslider-min.js"></script>
+    @Html.Raw(w.ScriptCode.Replace("&quot;", "\"").Replace("&apos;","'"))
+    <script type="text/javascript">
+
+        function next2() {
+            var len = $('[jimgviewer2-img]').size();
+            var cur = parseInt($('[jimgviewer2-c]').attr("curshow"))+1;
+            if (cur >= len) cur = 0;
+            $('[jimgviewer2-c] [jimgviewer2-img]').hide()
+            $('[jimgviewer2-c] [jimgviewer2-img]').eq(cur).show();
+            $('[jimgviewer2-c]').attr("curshow",cur)
+
+        }
+
+        function prve2() {
+            var len = $('[jimgviewer2-img]').size();
+            var cur = parseInt($('[jimgviewer2-c]').attr("curshow"))-1;
+            if (cur <= 0) cur = len-1;
+            $('[jimgviewer2-c] [jimgviewer2-img]').hide()
+            $('[jimgviewer2-c] [jimgviewer2-img]').eq(cur).show();
+            $('[jimgviewer2-c]').attr("curshow", cur)
+        }
+
+        function hides2() {
+            $('[jimgviewer2],[jimgviewer2-cover]').hide();
+        }
+
+        $(document).on("click", "[custom-link]", function () {
+            $.ajax({
+                url: "/GetCustomerCase",
+                type: "post",
+                data: { id: $(this).attr("id") },
+                success: function (data) {
+                    if (data.Code == 0) {
+                        if (data.Data.length == 0) return;
+
+                        $('[jimgviewer2] [jimgviewer2-img]').remove();
+                        for (var i in data.Data) {
+                            var ishow = i == 0 ? 'style="dispaly:inline"' : 'style="dispaly:none"';
+                            $('[jimgviewer2-c]').append('<img jimgviewer2-img ' + ishow + ' src="' + data.Data[i].ImgUrl + '" />');
+                        }
+                        $('[jimgviewer2-c]').attr("curshow",1);
+                        $('[jimgviewer2],[jimgviewer2-cover]').show();
+                    }
+                }
+            });
+
+        });
+
+      
+
+        //---------------
+        $('#showHome').hover(function () {
+            $('[showingHome]').show();
+        }, function () {
+            $('[showingHome]').hide();
+        });
+        $('#showQQ').hover(function () {
+            $('[showingQQ]').show();
+        }, function () {
+            $('[showingQQ]').hide();
+        });
+
+        $('#showPhone').hover(function () {
+            $('[showingPhone]').show();
+        }, function () {
+            $('[showingPhone]').hide();
+        });
+
+        $('#showQr').hover(function () {
+            $('[showingQR]').show();
+        }, function () {
+            $('[showingQR]').hide();
+        });
+
+        $('#toTop').bind("click", function () {
+            $('body,html').animate({ scrollTop: 0 }, 1000);
+        });
+
+        $('.flexslider').flexslider({
+            directionNav: false,
+            pauseOnAction: false
+        });
+
+        $('#SearchTxt').keyup(function (e) {
+            if (e.keyCode == 13) query();
+        });
+
+        function query() {
+            var keyword = $('#SearchTxt').val();
+            if ($.trim(keyword).length == 0) return alert("关键字不能为空");
+            window.location.href = "/search?keyword=" + escape(keyword);
+        }
+
+
+        var itemsSize = $('#customs-list>a').size();
+        var itemWidth = $('#customs-list>a:first').width();
+        var bos = $('#customs-list>a:first').offset();
+        var cc = 0;
+        var timer;
+
+        function marquee() {
+            if (itemsSize > 6) {
+                var os = $('#customs-list>a').eq(cc).offset();
+                if (bos.left - os.left > (itemWidth-30)) {
+                    $('#customs-list').append($('#customs-list>a').eq(cc++).prop("outerHTML"));
+                }
+
+
+                $('#customs-list>a').each(function () {
+                    $(this).offset({ left: $(this).offset().left - 1 });
+                });
+            }
+        }
+
+        timer = setInterval(marquee, 30);
+
+        $('#customs-list').hover(function () {
+            clearInterval(timer);
+        }, function () {
+            timer = setInterval(marquee, 30);
+        });
+
+
+    </script>
+</body>
+</html>

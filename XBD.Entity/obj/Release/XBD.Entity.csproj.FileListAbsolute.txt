@@ -1,0 +1,13 @@
+D:\Projects\XBD\XBD.Entity\bin\Release\XBD.Entity.dll
+D:\Projects\XBD\XBD.Entity\bin\Release\XBD.Entity.pdb
+D:\Projects\XBD\XBD.Entity\bin\Release\EntityFramework.dll
+D:\Projects\XBD\XBD.Entity\bin\Release\Newtonsoft.Json.dll
+D:\Projects\XBD\XBD.Entity\bin\Release\Swift.Net.dll
+D:\Projects\XBD\XBD.Entity\bin\Release\System.Web.Mvc.dll
+D:\Projects\XBD\XBD.Entity\bin\Release\System.Web.Razor.dll
+D:\Projects\XBD\XBD.Entity\bin\Release\System.Web.WebPages.Razor.dll
+D:\Projects\XBD\XBD.Entity\bin\Release\System.Web.WebPages.dll
+D:\Projects\XBD\XBD.Entity\bin\Release\System.Web.WebPages.Deployment.dll
+D:\Projects\XBD\XBD.Entity\obj\Release\XBD.Entity.csprojResolveAssemblyReference.cache
+D:\Projects\XBD\XBD.Entity\obj\Release\XBD.Entity.dll
+D:\Projects\XBD\XBD.Entity\obj\Release\XBD.Entity.pdb

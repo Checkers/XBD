@@ -1,0 +1,112 @@
+﻿@using Swift.Net.API
+@using Swift.Net.Share
+@using XBD.Entity
+@{
+    ViewBag.KeyWord = ViewData["KeyWord"] + "";
+    ViewBag.Description = ViewData["ListDes"] + "";
+    var w = XBD.Web.Utilities.WebInfo.GetWebInfo();
+    var list = ViewData["List"] as PaginationResult<ArticleDTO>;
+
+    var conf = System.Configuration.ConfigurationManager.AppSettings["WebTypeCode"];
+    var listNav = new XBD.Service.CategorySvc().GetWebTypeByCodeName(conf).Take(6);
+    ViewBag.Title = ViewData["ListName"] + "";
+}
+
+<div hd-slide>
+    <div class="flexslider">
+        <ul class="slides">
+            <li style="background: url(/Scripts/slide/images/img1.jpg) 50% 0 no-repeat;"></li>
+            <li style="background: url(/Scripts/slide/images/img2.jpg) 50% 0 no-repeat;"></li>
+            <li style="background: url(/Scripts/slide/images/img3.jpg) 50% 0 no-repeat;"></li>
+        </ul>
+    </div>
+</div>
+<div hd-slide-line></div>
+<div class="container body-content">
+    <div class="row" style="margin-top: 10px;">
+        @Html.Partial("PartalList")
+
+        <div class="col-lg-8" com-right>
+            <div list-content-title>
+                <div list-content-span>@(ViewData["ListName"] + "")</div>
+            </div>
+            <div id="Description" list-des>
+                @(ViewData["ListDes"] + "")
+            </div>
+
+            <div id="List" data-list>
+                @foreach (var item in list.Rows)
+                {
+                    var d = item.Description ?? "无描述";
+                    d = d.Cuts(180);
+                    <div data-list-item>
+                        <p data-list-title>
+                            <a href="/detail/@item.Id">@item.Name</a>
+                        </p>
+                        <time hidden data-list-date>发布时间：@item.AddTime.Value.ToString("yyyy-MM-dd")</time>
+                        <p>
+                            @d <a href="/detail/@item.Id" style="float:right"> &gt;&gt;查看详情</a>
+                        </p>
+                        <p>
+                            <i class="icon-tags"></i> @(item.KeyWord ?? "无")
+                        </p>
+                    </div>
+                }
+
+                <div id="pager" data-list-pager>
+                    <a onclick="pager.prev()" href="javascript:void(0);">上一页</a>
+                    @for (var i = 1; i <= (int)Math.Ceiling(list.Total / 4.0); i++)
+                    {
+                        <a href="javascript:void(0);" tag="@i" onclick="pager.page(@i)">@i</a>
+                    }
+                    <a onclick="pager.next()" href="javascript:void(0);">下一页</a>
+                    <span>共@(list.Total)条</span>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    var pager = {
+        current: window.location.host + window.location.pathname,
+        size: 4,
+        total: parseInt(@(list.Total)),
+        init: function () {
+            var curIndex = this.getParam("page");
+            if (curIndex == null) curIndex = 1;
+            setTimeout(function () {
+                $('#pager a[tag="' + curIndex + '"]').css("color", "#ddd");
+            }, 100);
+        },
+        page: function (index) {
+            var t = "";
+            var url = "http://" + this.current + "?page=" + index + t;
+            window.location.href = url;
+        },
+        prev: function () {
+            var curIndex = this.getParam("page");
+            if (curIndex == null) return window.location.reload();
+            var prevPage = parseInt(curIndex) - 1;
+            if (prevPage <= 0) return window.location.reload();
+            this.page(prevPage);
+        },
+        next: function () {
+            var curIndex = this.getParam("page");
+            if (curIndex == null) curIndex = 1;
+            var nextPage = parseInt(curIndex) + 1;
+            var maxPage = Math.ceil(this.total / parseFloat(this.size));
+            if (nextPage > maxPage) return window.location.reload();
+            this.page(nextPage);
+        },
+        getParam: function (name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    }
+    pager.init();
+</script>

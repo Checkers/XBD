@@ -1,0 +1,223 @@
+﻿
+@using XBD.Entity;
+@using Swift.Net.API;
+@using Swift.Net.Share;
+@{
+    ViewBag.Title = "客户列表";
+    var pageList = ViewData["PageList"] as PaginationResult<Customer>;
+}
+<script src="~/Scripts/swift.js"></script>
+
+<div class="page-head">
+    <h2 class="pull-left"><i class="icon-home"></i> 客户管理</h2>
+
+    <!-- Breadcrumb -->
+    <div class="bread-crumb pull-right">
+        <a href="/Admin/Manage/Index"><i class="icon-home"></i> 首页</a>
+        <!-- Divider -->
+        <span class="divider">/</span>
+        <a href="/Admin/Customer/Index" class="bread-current">客户列表</a>
+    </div>
+
+    <div class="clearfix"></div>
+
+</div>
+
+<div class="matter" style="border-top:none;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group " style="margin-bottom:0">
+                        <div class="col-lg-8">
+                            <select id="webType" name="CodeName" class="form-control" style="width:250px;">
+                                @foreach (Category item in ViewData["WebType"] as List<Category>)
+                                {
+                                    <option value="@item.CodeName">@item.Name</option>
+                                }
+                            </select>
+
+                        </div>
+                    </div>
+                </form>
+                @*table*@
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="widget">
+                            <div class="widget-head">
+                                <div class="pull-left">客户列表</div>
+                                <div class="widget-icons pull-right">
+                                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
+                                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="widget-content">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>编号</th>
+                                            <th>名称</th>
+                                            <th>网站分类代码</th>
+                                            <th>链接地址</th>
+                                            <th>排序</th>
+                                            <th>备注</th>
+                                            <th>添加时间</th>
+                                            <th>编辑时间</th>
+                                            <th>是否可用</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in pageList.Rows)
+                                        {
+                                            var st = item.Enable ? "label-success" : "label-danger";
+                                            var en = item.Enable ? "可用" : "不可用";
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@item.Name</td>
+                                                <td>@item.CodeName</td>
+                                                <td title="@item.ImgUrl">
+                                                    @(!string.IsNullOrEmpty(item.ImgUrl) ? item.ImgUrl.Cuts(20) : "")
+                                                </td>
+                                                <td>@item.Sort</td>
+                                                
+                                                <td title="@item.Remark">
+                                                    @(!string.IsNullOrEmpty(item.Remark) ? item.Remark.Cuts(20) : "")
+                                                </td>
+                                                <td>@item.AddTime</td>
+                                                <td>@item.EditTime</td>
+                                                <td>
+                                                    <span class="label @st">@en</span>
+                                                </td>
+                                                <td>
+                                                    <a href="/Admin/Customer/Edit/@item.Id" class="btn btn-xs btn-warning"><i class="icon-pencil"></i> </a>
+                                                    <a onclick="del(@item.Id)" class="btn btn-xs btn-danger"><i class="icon-remove"></i> </a>
+
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+
+                                <div class="widget-foot">
+                                    <ul class="pagination pull-left">
+                                        <li><a>共@(pageList.Total)条记录</a></li>
+                                    </ul>
+
+                                    <ul class="pagination pull-right">
+                                        <li><a onclick="pager.prev()" href="javascript:void(0);">上页</a></li>
+                                        @for (var i = 1; i <= (int)Math.Ceiling(pageList.Total / 10.0); i++)
+                                        {
+                                            <li><a href="javascript:void(0);" tag="@i" onclick="pager.page(@i)">@i</a></li>
+                                        }
+                                        <li><a onclick="pager.next()" href="javascript:void(0);">下页</a></li>
+                                    </ul>
+
+                                    <div class="clearfix"></div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                @*table*@
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p id="tipcontent"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var pager = {
+        current: window.location.host + window.location.pathname,
+        size: 10,
+        total: parseInt(@(pageList.Total)),
+        init: function () {
+            var curIndex = this.getParam("page");
+            if (curIndex == null) curIndex = 1;
+            $('.pagination [tag="' + curIndex + '"]').css("background", "#ddd");
+        },
+        page: function (index) {
+            var t = "";
+            var webtype = pager.getParam("webType");
+            if (webtype != null) t = "&webType=" + webtype;
+            var url = "http://" + this.current + "?page=" + index + t;
+            window.location.href = url;
+        },
+        prev: function () {
+            var curIndex = this.getParam("page");
+            if (curIndex == null) return window.location.reload();
+            var prevPage = parseInt(curIndex) - 1;
+            if (prevPage <= 0) return window.location.reload();
+            this.page(prevPage);
+        },
+        next: function () {
+            var curIndex = this.getParam("page");
+            if (curIndex == null) curIndex = 1;
+            var nextPage = parseInt(curIndex) + 1;
+            var maxPage = Math.ceil(this.total / parseFloat(this.size));
+            if (nextPage > maxPage) return window.location.reload();
+            this.page(nextPage);
+        },
+        getParam: function (name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    }
+    pager.init();
+
+
+    pageInit();
+    function pageInit() {
+        var t = pager.getParam("webType");
+        if (t == null) t = "Danger";
+        $('#webType').val(t);
+    }
+
+    $('#webType').on("change", function () {
+        var url = "http://" + pager.current + "?webType=" + $(this).val();
+        window.location.href = url;
+    });
+
+
+    function del(id) {
+        if (confirm("确认要删除？")) {
+            $.ajax({
+                url: "/Admin/Customer/Del",
+                type: "post",
+                data: { Id: id },
+                success: function (data) {
+                    alert(data.Data);
+                    window.location.reload();
+
+                }
+            });
+        }
+    }
+
+</script>
+
+
+

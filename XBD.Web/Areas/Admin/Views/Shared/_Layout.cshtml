@@ -1,0 +1,352 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <!-- Title and other stuffs -->
+    <title>@ViewBag.Title - 辛必达后台管理系统</title>
+    <!-- Stylesheets -->
+    <link href="~/Areas/Admin/Content/mac-Bootstrap/style/bootstrap.css" rel="stylesheet" />
+    <!-- Font awesome icon -->
+    <link rel="stylesheet" href="~/Areas/Admin/Content/mac-Bootstrap/style/font-awesome.css">
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="~/Areas/Admin/Content/mac-Bootstrap/style/jquery-ui.css">
+    <!-- prettyPhoto -->
+    <link rel="stylesheet" href="~/Areas/Admin/Content/mac-Bootstrap/style/prettyPhoto.css">
+    <!-- Star rating -->
+    <link rel="stylesheet" href="~/Areas/Admin/Content/mac-Bootstrap/style/rateit.css">
+    <!-- Bootstrap toggle -->
+    <link rel="stylesheet" href="~/Areas/Admin/Content/mac-Bootstrap/style/bootstrap-switch.css">
+    <!-- Main stylesheet -->
+    <link href="~/Areas/Admin/Content/mac-Bootstrap/style/style.css" rel="stylesheet">
+    <!-- Widgets stylesheet -->
+    <link href="~/Areas/Admin/Content/mac-Bootstrap/style/widgets.css" rel="stylesheet">
+    <link href="~/Areas/Admin/Content/bg.css" rel="stylesheet" />
+    <!-- HTML5 Support for IE -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shim.js"></script>
+    <![endif]-->
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Areas/Admin/Content/mac-Bootstrap/img/favicon/favicon.png">
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/jquery.js"></script> <!-- jQuery -->
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/bootstrap.js"></script> <!-- Bootstrap -->
+</head>
+
+<body>
+    @{
+        var session = Session["LoginInfo"] as XBD.Entity.Admin;
+        var user = new XBD.Service.AdminSvc().GetByName(session.Name);
+    }
+    <div class="navbar navbar-fixed-top bs-docs-nav" role="banner">
+        <div class="conjtainer">
+            <!-- Navigation starts -->
+            <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a style="font-weight: bold !important;">
+                            <span class="label label-info"><i class="icon-home"></i></span> 辛必达后台管理系统
+                        </a>
+                    </li>
+                </ul>
+                <!-- Search form -->
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                </form>
+                <!-- Links -->
+                <ul class="nav navbar-nav pull-right">
+                  
+                    <li class="dropdown pull-right">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="icon-user"></i> 管理员 <b class="caret"></b>
+                        </a>
+
+                        <!-- Dropdown menu -->
+                        <ul class="dropdown-menu">
+                            <li><a href="/Admin/Admin/Edit/@(user.Data.Id)"><i class="icon-user"></i> 资料</a></li>
+                            <li><a href="/Admin/Manage/Setting"><i class="icon-cogs"></i> 设置</a></li>
+                            <li><a href="/Admin/Login/LogOut"><i class="icon-off"></i> 退出</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="pull-right">
+                        <a  href="/" target="_blank">
+                            <i class="icon-home"></i> 前台网站 
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+
+    <!-- Header starts -->
+    <header style="padding:8px;"></header>
+
+    <!-- Header ends -->
+    <!-- Main content starts -->
+
+    <div class="content">
+        <div class="sidebar">
+            <div class="sidebar-dropdown"><a href="#">导航</a></div>
+
+            <!--- Sidebar navigation -->
+            <!-- If the main navigation has sub navigation, then add the class "has_sub" to "li" of main navigation. -->
+            <ul id="nav">
+                <!-- Main menu with font awesome icon -->
+                <li>
+                    <a href="~/Admin/Manage/Index" class="open"><i class="icon-home"></i> 首页</a>
+                </li>
+                <li>
+                    <a href="/Admin/Config"><i class="icon-list-alt"></i> 网站配置</a>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" id="Category"><i class="icon-file-alt"></i> 分类管理 <span class="pull-right"><i class="icon-chevron-right"></i></span></a>
+                    <ul>
+                        <li><a href="/Admin/Category/Index">分类列表</a></li>
+                        <li><a href="/Admin/Category/Add">添加分类</a></li>
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" id="Article"><i class="icon-file-alt"></i> 资讯管理  <span class="pull-right"><i class="icon-chevron-right"></i></span></a>
+                    <ul>
+                        <li><a href="/Admin/Article/Index">资讯管理</a></li>
+                        <li><a href="/Admin/Article/Add">添加资讯</a></li>
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" id="Case"><i class="icon-bar-chart"></i> 案例管理 <span class="pull-right"><i class="icon-chevron-right"></i></span></a>
+                    <ul>
+                        <li><a href="/Admin/Case/Index">案例列表</a></li>
+                        <li><a href="/Admin/Case/Add">添加案例</a></li>
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" id="Customer"><i class="icon-table"></i> 客户管理 <span class="pull-right"><i class="icon-chevron-right"></i></span></a>
+                    <ul>
+                        <li><a href="/Admin/Customer/Index">客户列表</a></li>
+                        <li><a href="/Admin/Customer/Add">添加客户</a></li>
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" id="Admin"><i class="icon-tasks"></i> 管理员 <span class="pull-right"><i class="icon-chevron-right"></i></span></a>
+                    <ul>
+                        <li><a href="/Admin/Admin/Index">管理员列表</a></li>
+                        <li><a href="/Admin/Admin/Add">添加管理员</a></li>
+                    </ul>
+                </li>
+                <li><a href="/Admin/Manage/Setting"><i class="icon-magic"></i> 系统设置</a></li>
+            </ul>
+        </div>
+
+        <!-- Sidebar ends -->
+        <!-- Main bar -->
+        <div class="mainbar">
+            @RenderBody()
+        </div>
+
+        <!-- Mainbar ends -->
+        <div class="clearfix"></div>
+    </div>
+    <!-- Content ends -->
+    <!-- Footer starts -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Copyright info -->
+                    <p class="copy">Copyright &copy; 2015 | <a href="#">辛必达后台管理系统</a> </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Footer ends -->
+    <!-- Scroll to top -->
+    <span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+
+    <!-- JS -->
+
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script> <!-- jQuery UI -->
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/jquery.rateit.min.js"></script> <!-- RateIt - Star rating -->
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/jquery.prettyPhoto.js"></script> <!-- prettyPhoto -->
+    <!-- jQuery Flot -->
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/excanvas.min.js"></script>
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/jquery.flot.js"></script>
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/jquery.flot.resize.js"></script>
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/jquery.flot.pie.js"></script>
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/jquery.flot.stack.js"></script>
+
+    <!-- jQuery Notification - Noty -->
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/jquery.noty.js"></script> <!-- jQuery Notify -->
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/themes/default.js"></script> <!-- jQuery Notify -->
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/layouts/bottom.js"></script> <!-- jQuery Notify -->
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/layouts/topRight.js"></script> <!-- jQuery Notify -->
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/layouts/top.js"></script> <!-- jQuery Notify -->
+    <!-- jQuery Notification ends -->
+
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/sparklines.js"></script> <!-- Sparklines -->
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/jquery.cleditor.min.js"></script> <!-- CLEditor -->
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/bootstrap-datetimepicker.min.js"></script> <!-- Date picker -->
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/bootstrap-switch.min.js"></script> <!-- Bootstrap Toggle -->
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/filter.js"></script> <!-- Filter for support page -->
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/custom.js"></script> <!-- Custom codes -->
+    <script src="~/Areas/Admin/Content/mac-Bootstrap/js/charts.js"></script> <!-- Charts & Graphs -->
+    <!-- Script for this page -->
+    <script type="text/javascript">
+        $(function () {
+            //list Open
+            var url = window.location.pathname;
+            if (url.indexOf("Category") >= 0) {
+                $('#Category').addClass("subdrop");
+                $('#Category').next().css("display", "block");
+            }
+
+            if (url.indexOf("Article") >= 0) {
+                $('#Article').addClass("subdrop");
+                $('#Article').next().css("display", "block");
+            }
+
+            if (url.indexOf("Case") >= 0) {
+                $('#Case').addClass("subdrop");
+                $('#Case').next().css("display", "block");
+            }
+
+            if (url.indexOf("Customer") >= 0) {
+                $('#Customer').addClass("subdrop");
+                $('#Customer').next().css("display", "block");
+            }
+
+            if (url.indexOf("/Admin/Admin") >= 0) {
+                $('#Admin').addClass("subdrop");
+                $('#Admin').next().css("display", "block");
+            }
+            /* Bar Chart starts */
+
+            var d1 = [];
+            for (var i = 0; i <= 20; i += 1)
+                d1.push([i, parseInt(Math.random() * 30)]);
+
+            var d2 = [];
+            for (var i = 0; i <= 20; i += 1)
+                d2.push([i, parseInt(Math.random() * 30)]);
+
+
+            var stack = 0, bars = true, lines = false, steps = false;
+
+            function plotWithOptions() {
+                $.plot($("#bar-chart"), [d1, d2], {
+                    series: {
+                        stack: stack,
+                        lines: { show: lines, fill: true, steps: steps },
+                        bars: { show: bars, barWidth: 0.8 }
+                    },
+                    grid: {
+                        borderWidth: 0, hoverable: true, color: "#777"
+                    },
+                    colors: ["#ff6c24", "#ff2424"],
+                    bars: {
+                        show: true,
+                        lineWidth: 0,
+                        fill: true,
+                        fillColor: { colors: [{ opacity: 0.9 }, { opacity: 0.8 }] }
+                    }
+                });
+            }
+
+            plotWithOptions();
+
+            $(".stackControls input").click(function (e) {
+                e.preventDefault();
+                stack = $(this).val() == "With stacking" ? true : null;
+                plotWithOptions();
+            });
+            $(".graphControls input").click(function (e) {
+                e.preventDefault();
+                bars = $(this).val().indexOf("Bars") != -1;
+                lines = $(this).val().indexOf("Lines") != -1;
+                steps = $(this).val().indexOf("steps") != -1;
+                plotWithOptions();
+            });
+
+            /* Bar chart ends */
+
+        });
+
+
+        /* Curve chart starts */
+
+        $(function () {
+            var sin = [], cos = [];
+            for (var i = 0; i < 14; i += 0.5) {
+                sin.push([i, Math.sin(i)]);
+                cos.push([i, Math.cos(i)]);
+            }
+
+            var plot = $.plot($("#curve-chart"),
+                   [{ data: sin, label: "sin(x)" }, { data: cos, label: "cos(x)" }], {
+                       series: {
+                           lines: { show: true, fill: true },
+                           points: { show: true }
+                       },
+                       grid: { hoverable: true, clickable: true, borderWidth: 0 },
+                       yaxis: { min: -1.2, max: 1.2 },
+                       colors: ["#1eafed", "#1eafed"]
+                   });
+
+            function showTooltip(x, y, contents) {
+                $('<div id="tooltip">' + contents + '</div>').css({
+                    position: 'absolute',
+                    display: 'none',
+                    top: y + 5,
+                    left: x + 5,
+                    border: '1px solid #000',
+                    padding: '2px 8px',
+                    color: '#ccc',
+                    'background-color': '#000',
+                    opacity: 0.9
+                }).appendTo("body").fadeIn(200);
+            }
+
+            var previousPoint = null;
+            $("#curve-chart").bind("plothover", function (event, pos, item) {
+                $("#x").text(pos.x.toFixed(2));
+                $("#y").text(pos.y.toFixed(2));
+
+                if ($("#enableTooltip:checked").length > 0) {
+                    if (item) {
+                        if (previousPoint != item.dataIndex) {
+                            previousPoint = item.dataIndex;
+
+                            $("#tooltip").remove();
+                            var x = item.datapoint[0].toFixed(2),
+                                y = item.datapoint[1].toFixed(2);
+
+                            showTooltip(item.pageX, item.pageY,
+                                        item.series.label + " of " + x + " = " + y);
+                        }
+                    }
+                    else {
+                        $("#tooltip").remove();
+                        previousPoint = null;
+                    }
+                }
+            });
+
+            $("#curve-chart").bind("plotclick", function (event, pos, item) {
+                if (item) {
+                    $("#clickdata").text("You clicked point " + item.dataIndex + " in " + item.series.label + ".");
+                    plot.highlight(item.series, item.datapoint);
+                }
+            });
+
+        });
+
+        /* Curve chart ends */
+    </script>
+
+</body>
+</html>

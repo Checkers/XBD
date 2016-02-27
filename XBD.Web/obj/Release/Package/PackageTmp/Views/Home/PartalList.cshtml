@@ -1,0 +1,37 @@
+﻿@{
+    var conf = System.Configuration.ConfigurationManager.AppSettings["WebTypeCode"];
+    var w = XBD.Web.Utilities.WebInfo.GetWebInfo();
+    var listNav = new XBD.Service.CategorySvc().GetWebTypeByCodeName(conf).Take(6);
+}
+<div class="col-lg-4" com-left>
+    <a href="http://wpa.qq.com/msgrd?v=3&uin=@(w.QQ)&site=qq&menu=yes" target="_blank" class="col-lg-5" com-left-item>
+        <div com-left-item="1">
+            在线咨询
+            <span com-left-contactonline>
+                <i class="icon-comments-alt "></i>
+            </span>
+        </div>
+        
+    </a>
+    <div class="col-lg-7" com-left-item>
+        @{var index = 3;}
+        @foreach (var item in listNav)
+        {
+            if (item.Name == "首页") { continue; }
+            <a href="@item.Link" class="col-lg-6" com-left-item="@(index++)">@item.Name</a>
+        }
+        <a href="/about" class="col-lg-6" com-left-item="66">联系我们</a>
+    </div>
+    <div about-us>
+        关于我们<br />
+        <p img-sh></p>
+        联系方式<br />
+        <p>
+            手机：@w.UserPhone1 、@w.UserPhone2<br />
+            全国：@w.TelCall<br />
+            QQ号：@w.QQ<br />
+            邮箱：@(w.Email)<br />
+            地址：@w.Address [<a href="/about">查看地图</a>]
+        </p>
+    </div>
+</div>

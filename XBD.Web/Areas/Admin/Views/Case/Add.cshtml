@@ -1,0 +1,165 @@
+﻿@using XBD.Entity;
+@{
+    ViewBag.Title = "添加案例";
+}
+<script src="~/Scripts/swift.js"></script>
+<script src="~/Scripts/jquery.form.js"></script>
+<div class="page-head">
+    <h2 class="pull-left"><i class="icon-home"></i> 网站案例</h2>
+
+    <!-- Breadcrumb -->
+    <div class="bread-crumb pull-right">
+        <a href="/Admin/Manage/Index"><i class="icon-home"></i> 首页</a>
+        <!-- Divider -->
+        <span class="divider">/</span>
+        <a href="/Admin/Case/Index" class="bread-current">网站案例</a>
+    </div>
+
+    <div class="clearfix"></div>
+
+</div>
+
+<div class="matter" style="border-top:none;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget wgreen">
+                    <div class="widget-content">
+                        <div class="padd">
+                            <h6>网站案例添加</h6>
+                            <hr>
+                            <!-- Form starts.  -->
+                            <form id="addCase" class="form-horizontal" action="/Admin/Case/Add" role="form">
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">网站标题</label>
+                                    <div class="col-lg-8">
+                                        <select name="CodeName" class="form-control">
+                                            @foreach (Category item in ViewData["WebType"] as List<Category>)
+                                            {
+                                                <option value="@item.CodeName">@item.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">所属客户</label>
+                                    <div class="col-lg-8">
+                                        <select name="CustomerId" class="form-control">
+                                               
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">名称</label>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" name="Name" type="text" placeholder="请输入案例名称">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">选择文件</label>
+                                    <div class="col-lg-8 overflow:hidden">
+                                        <div style=" float:left;width:35%;margin-top:5px;line-height:initial">
+                                            <input type="file" id="pic" name="pic" />
+                                        </div>
+                                        <div style=" float:left;width:50%">
+                                            <a id="upload" class="btn btn-primary">上传</a>
+                                        </div>
+                                        <div id="msg">&nbsp;</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">图片预览</label>
+                                    <div style="margin-left:5px">
+                                        <img id="show_img" style="margin-left:12px;width:142px;height:119px" src="../../Content/image/NoPhoto.jpg" onerror="javascript:this.src='/Areas/Admin/Content/mac-Bootstrap/img/nopic.png'" />
+                                        <input id="ImgUrl" name="ImgUrl" type="hidden" />
+                                        <input name="isWaterMark" value="true" type="hidden" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">排序号</label>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" name="Sort" value="0" type="text" placeholder="请输入排序号">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">关键字</label>
+                                    <div class="col-lg-8">
+                                        <textarea class="form-control" name="Remark" placeholder="请输入关键字信息" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-1 col-lg-9">
+                                        <a id="btn-save" class="btn btn-primary" onclick="submits()">确定保存</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="widget-foot">
+                        <!-- Footer goes here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p id="tipcontent"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#upload').click(function () {
+        $(this).html('<i class="icon-spinner icon-spin icon-large"></i> 正在上传...');
+        $("#addCase").ajaxSubmit({
+            type: "post",
+            data: $('#addCase').formSerialize(),
+            url: "/Admin/UpFile/UpLoadFile",
+            success: function (data) {
+                $('#upload').html("上传");
+                $('#show_img').attr("src", data.Data);
+                $('#ImgUrl').val(data.Data);
+            }
+        });
+    });
+
+    $("[name='CodeName']").on("change", function () {
+        $.ajax({
+            url: "/Admin/Case/CustomerList",
+            type: "post",
+            data: { webType: $("[name='CodeName']").val() },
+            success: function (data) {
+                $("[name=CustomerId]").html('<option value="">请选择所属客户</option>');
+                for (var i in data.Rows)
+                    $("[name=CustomerId]").append('<option value="' + data.Rows[i].Id + '">' + data.Rows[i].Name + '</option>');
+            }
+        });
+    });
+
+    $("[name='CodeName']").trigger("change");
+
+    function submits() {
+        $('#btn-save').html('<i class="icon-spinner icon-spin icon-large"></i> 正在保存...');
+        $('#addCase').go(function (data) {
+            $('#btn-save').html("确定保存");
+            $('#tipcontent').text(data.Data);
+            return $('#myModal').modal('show');
+        });
+    }
+</script>
+

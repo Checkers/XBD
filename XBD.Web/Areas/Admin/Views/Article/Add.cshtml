@@ -1,0 +1,171 @@
+﻿@using XBD.Entity;
+@{
+    ViewBag.Title = "添加资讯";
+}
+<script src="~/Scripts/swift.js"></script>
+<script src="~/Areas/Admin/Content/editor/ueditor.config.js"></script>
+<script src="~/Areas/Admin/Content/editor/ueditor.all.min.js"></script>
+<script src="~/Areas/Admin/Content/editor/lang/zh-cn/zh-cn.js"></script>
+
+<div class="page-head">
+    <h2 class="pull-left"><i class="icon-home"></i> 资讯管理</h2>
+
+    <!-- Breadcrumb -->
+    <div class="bread-crumb pull-right">
+        <a href="/Admin/Manage/Index"><i class="icon-home"></i> 首页</a>
+        <!-- Divider -->
+        <span class="divider">/</span>
+        <a href="/Admin/Article/Index" class="bread-current">资讯管理</a>
+    </div>
+
+    <div class="clearfix"></div>
+
+</div>
+
+<div class="matter" style="border-top:none;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget wgreen">
+                    <div class="widget-content">
+                        <div class="padd">
+                            <h6>添加资讯</h6>
+                            <hr>
+                            <!-- Form starts.  -->
+                            <form id="addArt" class="form-horizontal" action="/Admin/Article/Add" role="form">
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">所属网站</label>
+                                    <div class="col-lg-8">
+                                        <select name="Pid" class="form-control">
+                                            <option value="">请选择所属网站</option>
+                                            @foreach (Category item in ViewData["WebType"] as List<Category>)
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                        <label class="col-lg-4 control-label">所属分类</label>
+                                        <div class="col-lg-8">
+                                            <select name="TypeId" class="form-control">
+                                                <option value="">请选择所属分类</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">资讯标题</label>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" name="Name" type="text" placeholder="请输入资讯标题">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">资讯内容</label>
+                                    <div class="col-lg-8">
+                                        <script type="text/plain" id="Content" style="width:695px;height:240px;"></script>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">资讯摘要</label>
+                                    <div class="col-lg-8">
+                                        <textarea class="form-control" name="Description" rows="3" placeholder="点输入框自动获取"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">关键词</label>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" name="KeyWord" type="text" placeholder="请输入关键词">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">是否开启</label>
+                                    <div class="col-lg-8">
+                                        <select name="Enable" class="form-control">
+                                            <option value="true">开启</option>
+                                            <option value="false">关闭</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">排序号</label>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" name="Sort" value="0" type="text" placeholder="请输入排序号">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-1 col-lg-9">
+                                        <a class="btn btn-primary" onclick="submit()" type="button">确定保存</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="widget-foot">
+                        <!-- Footer goes here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p id="tipcontent"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //实例化编辑器
+    var ue = UE.getEditor('Content');
+
+    $('[name="Pid"]').on("change", function () {
+        $.ajax({
+            url: "/Admin/Category/GetCateType",
+            type:"post",
+            data: { id: $('[name="Pid"]').val() },
+            success: function (data) {
+                var list = eval(data.Rows);
+                var html = "";
+                for (var it in list) html += "<option value='" + list[it].Id + "'>" + list[it].Name + "</option>";
+                $('[name="TypeId"]').html(html);
+
+            }
+        });
+    });
+
+    $('[name="Description"]').on("focus", function () {
+        if ($('[name="Description"]').val().trim().length==0)
+            $(this).val(UE.getEditor('Content').getContentTxt().replace(/[\r\n]/g, '').substr(0, 300));
+    });
+
+    function submit() {
+        var c = UE.getEditor('Content').getContent().replace(/[\']/g, "&apos;").replace(/[\"]/g, "&quot");
+        var attach = {
+            Content: c
+        };
+        
+        $('#addArt').go(function (data) {
+            $('#tipcontent').text(data.Data);
+            $('#myModal').modal('show');
+            if(data.Code==0){
+                setTimeout(function () {
+                    location.href = "/Admin/Article/Index";
+                }, 1500);
+            }
+        }, attach);
+    }
+</script>

@@ -1,0 +1,8 @@
+[2016-01-01 14:30:36]<Swift.Net.Core.OnModelCreating> DbContext初始化失败:A configuration for type 'XBD.Entity.Article' has already been added. To reference the existing configuration use the Entity<T>() or ComplexType<T>() methods.
+
+[2016-01-01 14:36:47]<Swift.Net.Core.OnModelCreating> DbContext初始化失败:A configuration for type 'XBD.Entity.Article' has already been added. To reference the existing configuration use the Entity<T>() or ComplexType<T>() methods.
+
+[2016-01-01 14:37:57]<Swift.Net.Core.OnModelCreating> DbContext初始化失败:A configuration for type 'XBD.Entity.Article' has already been added. To reference the existing configuration use the Entity<T>() or ComplexType<T>() methods.
+
+[2016-01-01 14:38:57]<Swift.Net.Core.OnModelCreating> DbContext初始化失败:A configuration for type 'XBD.Entity.Article' has already been added. To reference the existing configuration use the Entity<T>() or ComplexType<T>() methods.
+

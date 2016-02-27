@@ -1,0 +1,16 @@
+[2015-12-02 20:45:24]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-02 21:00:02]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-02 21:35:11]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-02 21:39:22]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-02 22:33:46]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-02 22:37:45]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-02 23:32:11]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-02 23:39:39]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+

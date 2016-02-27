@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "关于我们";
+    var w = XBD.Web.Utilities.WebInfo.GetWebInfo();
+}
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=owILLG7keXiED9kuhowQ4ztc"></script>
+<div id="mapper" hd-slide>
+</div>
+<div hd-slide-line></div>
+<div class="container body-content">
+    <div class="row" style="margin-top:10px;">
+        <div cate-about-us>
+                <p cate-about-us-title>关于我们</p>
+                <p cate-about-us-des>
+                    @w.Descript
+                </p>
+                <p cate-about-us-title>联系方式</p>
+                <p cate-about-us-content>
+                    手机：@w.UserPhone1 、@w.UserPhone2<br />
+                    电话：@w.TelCall.Split('、')[1]<br />
+                    全国：@w.TelCall.Split('、')[0]<br />
+                    QQ号：@w.QQ<br />
+                    邮箱：@(w.QQ)@@qq.com<br />
+                    地址：@w.Address
+                </p>
+            </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    var map = new BMap.Map("mapper");
+    map.centerAndZoom("上海市浦东新区世纪大道100号", 18);
+    var marker = new BMap.Marker(new BMap.Point(121.513916, 31.240237));
+    map.addOverlay(marker);
+    map.disableScrollWheelZoom();
+    map.disableDoubleClickZoom();
+
+</script>

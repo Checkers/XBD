@@ -1,0 +1,17 @@
+D:\Projects\XBD\XBD.Service\bin\Release\XBD.Service.dll
+D:\Projects\XBD\XBD.Service\bin\Release\XBD.Service.pdb
+D:\Projects\XBD\XBD.Service\bin\Release\Newtonsoft.Json.dll
+D:\Projects\XBD\XBD.Service\bin\Release\Swift.Net.dll
+D:\Projects\XBD\XBD.Service\bin\Release\XBD.Entity.dll
+D:\Projects\XBD\XBD.Service\bin\Release\XBD.Repository.dll
+D:\Projects\XBD\XBD.Service\bin\Release\EntityFramework.dll
+D:\Projects\XBD\XBD.Service\bin\Release\System.Web.Mvc.dll
+D:\Projects\XBD\XBD.Service\bin\Release\System.Web.Razor.dll
+D:\Projects\XBD\XBD.Service\bin\Release\System.Web.WebPages.Razor.dll
+D:\Projects\XBD\XBD.Service\bin\Release\System.Web.WebPages.dll
+D:\Projects\XBD\XBD.Service\bin\Release\System.Web.WebPages.Deployment.dll
+D:\Projects\XBD\XBD.Service\bin\Release\XBD.Entity.pdb
+D:\Projects\XBD\XBD.Service\bin\Release\XBD.Repository.pdb
+D:\Projects\XBD\XBD.Service\obj\Release\XBD.Service.csprojResolveAssemblyReference.cache
+D:\Projects\XBD\XBD.Service\obj\Release\XBD.Service.dll
+D:\Projects\XBD\XBD.Service\obj\Release\XBD.Service.pdb

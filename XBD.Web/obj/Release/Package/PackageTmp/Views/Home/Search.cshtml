@@ -1,0 +1,73 @@
+﻿@{
+    Layout = null;
+    var list = ViewData["Result"] as List<XBD.Entity.Narcotics>;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>危险化学品查询 - 辛必达</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+    <div search-header>
+        <input id="keyword" search-box />
+        <a search-commit onclick="query()">查询</a>
+    </div>
+    <div search-content>
+        @{
+            if (list.Count == 0)
+            {
+                <p style="text-align:center; font-size:2vw;">对不起，没有相关信息</p>
+            }
+            else
+            {
+                foreach (var item in list)
+                {
+                    <div search-content-item>
+                        <h3>@item.Name</h3>
+                        <p>别名：@item.SubName</p>
+                        <p>CAS号：@item.CASNo</p>
+                        <p>@item.Remark</p>
+                    </div>
+                }
+            }}
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            var ke = unescape(getParam("keyword"));
+            if (ke != null && ke !=undefined&& ke !="null") {
+                $('#keyword').val(ke);
+                $('p,h3').each(function () {
+                    var txt = $(this).text();
+                    txt = txt.replace(ke, "<span style='color:red'>" + ke + "</span>");
+                    $(this).html(txt);
+                });
+            }
+            
+
+
+            $('#keyword').keyup(function (e) {
+                if (e.keyCode == 13) query();
+            });
+        });
+
+        function query() {
+            var keyword = $('#keyword').val();
+            if ($.trim(keyword).length == 0) return alert("关键字不能为空");
+            window.location.href = "/search?keyword=" + escape(keyword);
+        }   
+
+        function getParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+
+        
+    </script>
+</body>
+</html>

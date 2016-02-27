@@ -1,0 +1,58 @@
+[2015-12-20 14:57:36]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 14:58:52]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 16:03:07]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 16:13:57]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 18:45:49]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 19:49:53]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 19:52:13]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 19:56:01]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 19:57:58]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 20:02:55]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 20:06:24]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 20:12:13]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 20:16:02]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 20:30:10]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 20:32:12]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 20:33:30]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 20:34:33]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 20:37:44]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 20:42:53]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 20:45:22]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 20:47:46]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 20:53:02]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 20:56:05]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 20:57:58]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 21:00:53]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 21:01:23]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 21:03:52]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 21:07:58]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-12-20 21:11:28]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+

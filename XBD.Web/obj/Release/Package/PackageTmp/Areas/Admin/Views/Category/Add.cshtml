@@ -1,0 +1,146 @@
+﻿@using XBD.Entity;
+@{
+    ViewBag.Title = "添加分类";
+}
+<script src="~/Scripts/swift.js"></script>
+
+<div class="page-head">
+    <h2 class="pull-left"><i class="icon-home"></i> 网站分类</h2>
+
+    <!-- Breadcrumb -->
+    <div class="bread-crumb pull-right">
+        <a href="/Admin/Manage/Index"><i class="icon-home"></i> 首页</a>
+        <!-- Divider -->
+        <span class="divider">/</span>
+        <a href="/Admin/Category/Index" class="bread-current">网站分类</a>
+    </div>
+
+    <div class="clearfix"></div>
+
+</div>
+
+<div class="matter" style="border-top:none;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget wgreen">
+                    <div class="widget-content">
+                        <div class="padd">
+                            <h6>网站分类添加</h6>
+                            <hr>
+                            <!-- Form starts.  -->
+                            <form id="addCate" class="form-horizontal" action="/Admin/Category/Add" role="form">
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">网站标题</label>
+                                    <div class="col-lg-8">
+                                        <select name="Pid" class="form-control">
+                                            <option value="0">新网站类型</option>
+                                            @foreach (Category item in ViewData["WebType"] as List<Category>)
+                                                {
+                                                <option value="@item.Id">@item.Name</option>
+                                                }
+
+                                        </select>
+                                    </div>
+                                </div>
+                                @*<div class="form-group">
+                                        <label class="col-lg-4 control-label">父级分类</label>
+                                        <div class="col-lg-8">
+                                            <select class="form-control">
+                                                <option value="0">危险品</option>
+                                                <option value="1">化工品</option>
+                                                <option value="2">重金属</option>
+                                                <option value="3">重工</option>
+                                                <option value="4">核弹</option>
+                                            </select>
+                                        </div>
+                                    </div>*@
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">名称</label>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" name="Name" type="text" placeholder="请输入分类名称">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">分类代码</label>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" name="CodeName" type="text" placeholder="请输入分类代码">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">链接地址</label>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" name="Link" type="text" placeholder="请输入链接地址">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">关键词</label>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" name="KeyWord" type="text" placeholder="请输入关键词">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">是否可用</label>
+                                    <div class="col-lg-8">
+                                        <select name="Enable" class="form-control">
+                                            <option value="true">可用</option>
+                                            <option value="false">不可用</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">排序号</label>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" name="Sort" value="0" type="text" placeholder="请输入排序号">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">备注</label>
+                                    <div class="col-lg-8">
+                                        <textarea class="form-control" name="Remark" placeholder="请输入描述信息" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-1 col-lg-9">
+                                        <a class="btn btn-primary" onclick="submit()" type="button">确定保存</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="widget-foot">
+                        <!-- Footer goes here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p id="tipcontent"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function submit() {
+
+        $('#addCate').go(function (data) {
+            $('#tipcontent').text(data.Data);
+            return $('#myModal').modal('show');
+        });
+    }
+</script>

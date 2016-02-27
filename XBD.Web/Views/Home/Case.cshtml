@@ -1,0 +1,190 @@
+﻿@using Swift.Net.API
+@using XBD.Entity
+@{
+    var w = XBD.Web.Utilities.WebInfo.GetWebInfo();
+    var list = ViewData["model"] as PaginationResult<XBD.Entity.DTO.CaseDTO>;
+    var conf = System.Configuration.ConfigurationManager.AppSettings["WebTypeCode"];
+    var listNav = new XBD.Service.CategorySvc().GetWebTypeByCodeName(conf).Take(6);
+    ViewBag.Title = "成功案例";
+}
+
+
+<div hd-slide>
+    <div class="flexslider">
+        <ul class="slides">
+            <li style="background: url(/Scripts/slide/images/img1.jpg) 50% 0 no-repeat;"></li>
+            <li style="background: url(/Scripts/slide/images/img2.jpg) 50% 0 no-repeat;"></li>
+            <li style="background: url(/Scripts/slide/images/img3.jpg) 50% 0 no-repeat;"></li>
+        </ul>
+    </div>
+</div>
+<div hd-slide-line></div>
+<div class="container body-content">
+    <div class="row" style="margin-top:10px;">
+        @Html.Partial("PartalList")
+
+        <div class="col-lg-8" com-right>
+            <div list-content-title>
+                <div list-content-span>成功案例</div>
+            </div>
+            <div list-content-case>
+                @foreach (var item in list.Rows)
+                {
+                    <div list-case-item>
+                        <input type="hidden" value="@item.Remark" />
+                        <div list-case-item-sub>
+                            <img class="show_imger" name="@item.numid" onclick="showIt(this.src, this.title,this.name);" list-case-item-img title="@item.Name" src="@item.ImgUrl" />
+                        </div>
+                        <a class="show_namer" href="javascript:void(0);" list-case-item-title>@item.Name</a>
+                    </div>
+                }
+            </div>
+
+            <div id="pager" data-list-pager style="margin-top: 10px;">
+
+                <a onclick="pager.prev()" href="javascript:void(0);">上一页</a>
+                @for (var i = 1; i <= (int)Math.Ceiling(list.Total / 9.0); i++)
+                {
+                    <a href="javascript:void(0);" tag="@i" onclick="pager.page(@i)">@i</a>
+                }
+                <a onclick="pager.next()" href="javascript:void(0);">下一页</a>
+                <span>共@(list.Total)条</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" style="width:800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    查看案例
+                </h4>
+            </div>
+            <div class="modal-body">
+                <img style="width: 100%;" id="modal_Img" src="" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div jimgviewer>
+    <div jimgviewer-c>
+        <img jimgviewer-img src="/Areas/Admin/Content/editor/net/upload/caseimgs/130974958939520005_1101.jpg" alt="Alternate Text" />
+        <div jimgviewer-f>
+            常州中国大明富集团
+        </div>
+        <div jimgviewer-left title="上一张" onclick="prve()"></div>
+        <img jimgviewer-left-img onclick="prve()" src="~/Content/image/left.png" />
+        <div jimgviewer-right title="下一张" onclick="next()"></div>
+        <img jimgviewer-right-img onclick="next()" src="~/Content/image/right.png" />
+        <div jimgviewer-close title="关闭" onclick="hides()">×</div>
+    </div>
+</div>
+<div jimgviewer-cover></div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+
+    function next() {
+        $.ajax({
+            url: "/GetNextCase",
+            type: "post",
+            data: { id: $('[jimgviewer-img]').attr("numid") },
+            success: function (data) {
+                if (data.Code == 0) {
+                    $('[jimgviewer-img]').attr("src", data.Data.ImgUrl);
+                    $('[jimgviewer-img]').attr("numid", data.Data.numid);
+                    $('[jimgviewer-f]').text(data.Data.Name);
+                } else {
+                    alert("没有了");
+                }
+            }
+        });
+    }
+
+    function prve() {
+        $.ajax({
+            url: "/GetPrevCase",
+            type: "post",
+            data: { id: $('[jimgviewer-img]').attr("numid") },
+            success: function (data) {
+                if (data.Code == 0) {
+                    $('[jimgviewer-img]').attr("src", data.Data.ImgUrl);
+                    $('[jimgviewer-img]').attr("numid", data.Data.numid);
+                    $('[jimgviewer-f]').text(data.Data.Name);
+                } else {
+                    alert("没有了");
+                }
+            }
+        });
+    }
+
+    function hides() {
+        $('[jimgviewer],[jimgviewer-cover]').hide();
+    }
+
+    function showIt(src, imgName, numid) {
+        $('[jimgviewer-img]').attr("src", src);
+        $('[jimgviewer-img]').attr("numid", numid);
+        $('[jimgviewer-f]').text(imgName);
+        $('[jimgviewer],[jimgviewer-cover]').show();
+    }
+
+    $('.show_namer').click(function () {
+        $(this).parent().find('.show_imger').trigger("click");
+    });
+
+
+    var pager = {
+        current: window.location.host + window.location.pathname,
+        size: 9,
+        total: parseInt(@(list.Total)),
+        init: function () {
+            var curIndex = this.getParam("page");
+            if (curIndex == null) curIndex = 1;
+            setTimeout(function () {
+                $('#pager a[tag="' + curIndex + '"]').css("color", "#ddd");
+            }, 100);
+        },
+        page: function (index) {
+            var t = "";
+            var webtype = pager.getParam("webType");
+            if (webtype != null) t = "&webType=" + webtype;
+            var url = "http://" + this.current + "?page=" + index + t;
+            window.location.href = url;
+        },
+        prev: function () {
+            var curIndex = this.getParam("page");
+            if (curIndex == null) return window.location.reload();
+            var prevPage = parseInt(curIndex) - 1;
+            if (prevPage <= 0) return window.location.reload();
+            this.page(prevPage);
+        },
+        next: function () {
+            var curIndex = this.getParam("page");
+            if (curIndex == null) curIndex = 1;
+            var nextPage = parseInt(curIndex) + 1;
+            var maxPage = Math.ceil(this.total / parseFloat(this.size));
+            if (nextPage > maxPage) return window.location.reload();
+            this.page(nextPage);
+        },
+        getParam: function (name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    }
+    pager.init();
+
+
+
+
+</script>

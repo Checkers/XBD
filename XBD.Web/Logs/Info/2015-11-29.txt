@@ -1,0 +1,56 @@
+[2015-11-29 02:22:35]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 02:26:12]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 02:29:16]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 02:30:46]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 02:31:25]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 13:57:04]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 14:18:23]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 15:03:11]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 15:08:06]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 15:09:38]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 15:17:43]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 15:18:39]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 15:33:33]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 15:37:41]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 16:35:25]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 16:36:37]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 16:38:29]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 16:42:03]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 16:47:24]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 16:49:43]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 16:50:40]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 16:59:22]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 17:12:53]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 17:34:34]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 17:53:26]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 18:04:07]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 18:10:50]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+
+[2015-11-29 22:01:46]<Swift.Net.Core.OnModelCreating> DbContext初始化成功！
+

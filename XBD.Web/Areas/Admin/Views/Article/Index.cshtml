@@ -1,0 +1,298 @@
+﻿@using XBD.Entity;
+@using Swift.Net.API;
+@using Swift.Net.Share;
+@{
+    ViewBag.Title = "资讯列表";
+    var pageList = ViewData["PageList"] as PaginationResult<XBD.Entity.ArticleDTO>;
+}
+<script src="~/Scripts/swift.js"></script>
+
+<div class="page-head">
+    <h2 class="pull-left"><i class="icon-home"></i> 资讯管理</h2>
+
+    <!-- Breadcrumb -->
+    <div class="bread-crumb pull-right">
+        <a href="/Admin/Manage/Index"><i class="icon-home"></i> 首页</a>
+        <!-- Divider -->
+        <span class="divider">/</span>
+        <a href="/Admin/Article/Index" class="bread-current">资讯列表</a>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="matter" style="border-top:none;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group " style="margin-bottom:0">
+                        <div class="col-lg-12">
+                            <label class="col-lg-4 control-label left">网站类型</label>
+                            <select id="webType" class="form-control" style="width:150px; float:left;">
+                                <option value="0">全部网站</option>
+                                @foreach (Category item in ViewData["WebType"] as List<Category>)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+
+                            <label class="col-lg-4 control-label left">网站目录</label>
+                            <select id="cateType" class="form-control" style="width: 150px; float: left;">
+                                <option value="0">全部分类</option>
+                            </select>
+
+                            <label class="col-lg-4 control-label left">资讯名称</label>
+                            <input class="form-control" id="name" type="text" style="width:150px; float:left;display:inline-block;" placeholder="名称关键字">
+                            <a class="btn  btn-primary" onclick="query()" style="float:left; margin-left:20px;">查询</a>
+                            <a class="btn  btn-danger" onclick="delBatch()" style="float:left; margin-left:20px;">批量删除</a>
+                        </div>
+
+                    </div>
+                </form>
+                @*table*@
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="widget">
+                            <div class="widget-head">
+                                <div class="pull-left">资讯列表</div>
+                                <div class="widget-icons pull-right">
+                                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
+                                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="widget-content">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>编号</th>
+                                            <th>标题</th>
+                                            <th>分类</th>
+                                            <th>关键词</th>
+                                            <th>摘要</th>
+                                            <th>排序</th>
+                                            <th>添加时间</th>
+                                            <th>编辑时间</th>
+                                            <th>状态</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in pageList.Rows)
+                                        {
+                                            var st = item.Enable ? "label-success" : "label-danger";
+                                            var en = item.Enable ? "开启" : "关闭";
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="delitems" value="@item.Id" />
+                                            </td>
+                                            <td>@item.Id</td>
+                                            <td>@item.Name</td>
+                                            <td>@item.TypeStr</td>
+                                            <td title="@item.KeyWord">
+                                                @(!string.IsNullOrEmpty(item.KeyWord) ? item.KeyWord.Cuts(20) : "")
+                                            </td>
+                                            <td title="@item.Description">
+                                                @(!string.IsNullOrEmpty(item.Description) ? item.Description.Cuts(25) : "")
+                                            </td>
+                                            <td>@item.Sort</td>
+                                            <td>@item.AddTime</td>
+                                            <td>@item.EditTime</td>
+                                            <td>
+                                                <span class="label @st">@en</span>
+                                            </td>
+                                            <td>
+                                                <a href="/Admin/Article/Edit/@item.Id" class="btn btn-xs btn-warning"><i class="icon-pencil"></i> </a>
+                                                <a onclick="del(@item.Id)" class="btn btn-xs btn-danger"><i class="icon-remove"></i> </a>
+                                            </td>
+                                        </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+
+                                <div class="widget-foot">
+                                    <ul class="pagination pull-left">
+                                        <li><a>共@(pageList.Total)条记录</a></li>
+                                    </ul>
+
+                                    <ul class="pagination pull-right">
+                                        <li><a onclick="pager.prev()" href="javascript:void(0);">上页</a></li>
+                                        @for (var i = 1; i <= (int)Math.Ceiling(pageList.Total / 10.0); i++)
+                                        {
+                                        <li><a href="javascript:void(0);" tag="@i" onclick="pager.page(@i)">@i</a></li>
+                                        }
+                                        <li><a onclick="pager.next()" href="javascript:void(0);">下页</a></li>
+                                    </ul>
+
+                                    <div class="clearfix"></div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                @*table*@
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p id="tipcontent"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var pager = {
+        current: window.location.host + window.location.pathname,
+        size: 10,
+        total: parseInt(@(pageList.Total)),
+        init: function () {
+            var curIndex = this.getParam("page");
+            if (curIndex == null) curIndex = 1;
+            $('.pagination [tag="' + curIndex + '"]').css("background", "#ddd");
+        },
+        page: function (index) {
+            var url = "http://" + this.current + "?page=" + index + this.existParams();
+            window.location.href = url;
+        },
+        prev: function () {
+            var curIndex = this.getParam("page");
+            if (curIndex == null) return window.location.reload();
+            var prevPage = parseInt(curIndex) - 1;
+            if (prevPage <= 0) return window.location.reload();
+            this.page(prevPage);
+        },
+        next: function () {
+            var curIndex = this.getParam("page");
+            if (curIndex == null) curIndex = 1;
+            var nextPage = parseInt(curIndex) + 1;
+            var maxPage = Math.ceil(this.total / parseFloat(this.size));
+            if (nextPage > maxPage) return window.location.reload();
+            this.page(nextPage);
+        },
+        existParams: function () {
+            var t = "";
+            var webType = pager.getParam("webType");
+            if (webType != null) t += "&webType=" + webType;
+            var typeId = pager.getParam("typeId");
+            if (typeId != null) t += "&typeId=" + typeId;
+            var title = pager.getParam("title");
+            if (title != null) t += "&title=" + encodeURIComponent(title);
+            return t;
+        },
+        getParam: function (name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return decodeURIComponent(r[2]); return null;
+        }
+    }
+    pager.init();
+
+    $('#webType').on("change", function () {
+        var html = '<option value="0">全部分类</option>';
+        $.ajax({
+            url: "/Admin/Category/GetCateType",
+            type: "post",
+            data: { Id: $('#webType').val() },
+            success: function (data) {
+                var cates = eval(data.Rows);
+                for (var it in cates) {
+                    html += '<option value="' + cates[it].Id + '">' + cates[it].Name + '</option>';
+                }
+                $('#cateType').html(html);
+            }
+        });
+    });
+
+
+    pageInit();
+    function pageInit() {
+        var wt = pager.getParam("webType");
+        var ct = pager.getParam("typeId");
+        var title = pager.getParam("title");
+        if (title == null) title = "";
+        $('#name').val(title);
+        if (wt == null) wt = 0;
+        $('#webType').val(wt);
+        var html = '<option value="0">全部分类</option>';
+        $.ajax({
+            url: "/Admin/Category/GetCateType",
+            type: "post",
+            async:false,
+            data: { Id: $('#webType').val() },
+            success: function (data) {
+                var cates = eval(data.Rows);
+                for (var it in cates) {
+                    html += '<option value="' + cates[it].Id + '">' + cates[it].Name + '</option>';
+                }
+                $('#cateType').html(html);
+            }
+        });
+
+        if (ct == null) ct = 0;
+        $('#cateType').val(ct);
+        
+    }
+
+   
+
+    function query() {
+        var wType = $('#webType').val();
+        var cType = $('#cateType').val();
+        var keyword = $('#name').val();
+        window.location.href = "/Admin/Article/Index?webType=" + wType + "&typeId=" + cType + "&title="+keyword;
+    }
+
+
+    function del(id) {
+        if (confirm("确认要删除？")) {
+            $.ajax({
+                url: "/Admin/Article/Del",
+                type: "post",
+                data: { Id: id },
+                success: function (data) {
+                    alert(data.Data);
+                    window.location.reload();
+                }
+            });
+        }
+    }
+
+    function delBatch() {
+        if (!confirm("确认要删除？")) return;
+        var ids = "";
+        $('.delitems').each(function () {
+            if ($(this).is(':checked')) ids += $(this).val()+"|";
+        });
+
+        if (ids == "") return alert("请选择要删除的文章");
+
+        $.ajax({
+            url: "/Admin/Article/DelBatch",
+            type: "post",
+            data: { ids: ids },
+            success: function (data) {
+                alert(data.Data);
+                window.location.reload();
+            }
+        });
+    }
+</script>
