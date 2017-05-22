@@ -32,10 +32,8 @@
                 <div hd-contact>
                     <span class="glyphicon glyphicon-earphone"></span> @w.TelCall.Split('、')[0]
                 </div>
-
             </div>
             <ul hd-nav>
-
                 @foreach (var item in list)
                 {
                     <li><a href="@item.Link">@item.Name</a></li>
@@ -43,6 +41,25 @@
             </ul>
         </div>
     </header>
+    @if (ViewBag.IsSlide != true)
+    {
+        <div hd-slide>
+            <div class="flexslider">
+                <ul class="slides">
+                    <li style="background: url(/Scripts/slide/images/img1.jpg) 50% 0 no-repeat;"></li>
+                    <li style="background: url(/Scripts/slide/images/img2.jpg) 50% 0 no-repeat;"></li>
+                    <li style="background: url(/Scripts/slide/images/img3.jpg) 50% 0 no-repeat;"></li>
+                </ul>
+            </div>
+        </div>
+        @*<div hd-slide-line>
+            <div class="container" orange style="overflow:hidden; line-height:40px; text-align:right; color:#E4AE3E; font-style:italic; font-weight:bold;  font-size:20px;">
+                <div style="display:inline-block; background:#F8F8F8;padding:0 10px;">
+                    <img src="~/Content/image/iconfont-phone.png" style="width:25px;vertical-align:middle; margin-top:-5px;" /> @w.TelCall.Split('、')[0]
+                </div>
+            </div>
+        </div>*@
+    }
     @RenderBody()
     <div our-custom>
         <div class="container" style="overflow:hidden;">
@@ -50,7 +67,7 @@
             <div customs-div id="customs-list">
                 @foreach (var item in listCus.Rows)
                 {
-                    <a custom-link id="@item.Id" href="javascript:void(0)" target="_blank">
+                    <a custom-link id="@item.Id" href="javascript:void(0)">
                         <img src="@(item.ImgUrl+"")" title="@(item.Name+"")" />
                     </a>
                 }
@@ -59,7 +76,6 @@
     </div>
     <div id="footer">
         <div foot-div class="container">
-
             <div foot-mid>
                 <img foot-pain-img src="@w.QRCode" />
                 <div foot-pain>
@@ -74,12 +90,12 @@
                 @foreach (var item in listNav)
                 {
                     if (item.Name == "首页") { continue; }
-                    <a href="@item.Link">@(item.Name)</a> 
-                    if(item.Name!=listNav.Last().Name)
+                    <a href="@item.Link">@(item.Name)</a>
+                    if (item.Name != listNav.Last().Name)
                     {<span> | </span>}
                 }
             </div>
-            
+
             <div foot-copyright>
                 版权所有：@w.CopyRight
             </div>
@@ -92,7 +108,7 @@
         <a id="showHome" href="/" class="gc-span">
             <i class="icon iconfont">&#xf0055;</i>
         </a>
-        <a id="showQQ" href="http://wpa.qq.com/msgrd?v=3&uin=@(w.QQ)&site=qq&menu=yes" class="gc-span">
+        <a id="showQQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=@(w.QQ)&site=qq&menu=yes" class="gc-span">
             <i class="icon iconfont">&#xe631;</i>
         </a>
         <a id="showPhone" class="gc-span">
@@ -109,9 +125,9 @@
 
     <div jimgviewer2>
         <div jimgviewer2-c curshow="0">
-            <img jimgviewer2-img src="/Areas/Admin/Content/editor/net/upload/caseimgs/130974958939520005_1101.jpg" alt="Alternate Text" />
+            <img jimgviewer2-img src="" alt="Alternate Text" />
             <div jimgviewer2-f>
-                常州中国大明富集团
+
             </div>
             <div jimgviewer2-left title="上一张" onclick="prve2()"></div>
             <img jimgviewer2-left-img onclick="prve2()" src="~/Content/image/left.png" />
@@ -126,26 +142,29 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/slide/js/jquery.flexslider-min.js"></script>
-    @Html.Raw(w.ScriptCode.Replace("&quot;", "\"").Replace("&apos;","'"))
+    @Html.Raw(w.ScriptCode.Replace("&quot;", "\"").Replace("&apos;", "'"))
     <script type="text/javascript">
 
         function next2() {
             var len = $('[jimgviewer2-img]').size();
-            var cur = parseInt($('[jimgviewer2-c]').attr("curshow"))+1;
+            var cur = parseInt($('[jimgviewer2-c]').attr("curshow")) + 1;
             if (cur >= len) cur = 0;
             $('[jimgviewer2-c] [jimgviewer2-img]').hide()
             $('[jimgviewer2-c] [jimgviewer2-img]').eq(cur).show();
-            $('[jimgviewer2-c]').attr("curshow",cur)
+            $('[jimgviewer2-c]').attr("curshow", cur);
+
+            $('[jimgviewer2-f]').text($('[jimgviewer2-c] [jimgviewer2-img]').eq(cur).attr("alt"));
 
         }
 
         function prve2() {
             var len = $('[jimgviewer2-img]').size();
-            var cur = parseInt($('[jimgviewer2-c]').attr("curshow"))-1;
-            if (cur <= 0) cur = len-1;
+            var cur = parseInt($('[jimgviewer2-c]').attr("curshow")) - 1;
+            if (cur <= 0) cur = len - 1;
             $('[jimgviewer2-c] [jimgviewer2-img]').hide()
             $('[jimgviewer2-c] [jimgviewer2-img]').eq(cur).show();
             $('[jimgviewer2-c]').attr("curshow", cur)
+            $('[jimgviewer2-f]').text($('[jimgviewer2-c] [jimgviewer2-img]').eq(cur).attr("alt"));
         }
 
         function hides2() {
@@ -164,9 +183,10 @@
                         $('[jimgviewer2] [jimgviewer2-img]').remove();
                         for (var i in data.Data) {
                             var ishow = i == 0 ? 'style="dispaly:inline"' : 'style="dispaly:none"';
-                            $('[jimgviewer2-c]').append('<img jimgviewer2-img ' + ishow + ' src="' + data.Data[i].ImgUrl + '" />');
+                            $('[jimgviewer2-c]').append('<img jimgviewer2-img ' + ishow + ' src="' + data.Data[i].ImgUrl + '" alt="' + data.Data[i].Name + '" />');
+                            $('[jimgviewer2-f]').text(data.Data[i].Name);
                         }
-                        $('[jimgviewer2-c]').attr("curshow",1);
+                        $('[jimgviewer2-c]').attr("curshow", 1);
                         $('[jimgviewer2],[jimgviewer2-cover]').show();
                     }
                 }
@@ -174,7 +194,7 @@
 
         });
 
-      
+
 
         //---------------
         $('#showHome').hover(function () {
@@ -205,7 +225,7 @@
         });
 
         $('.flexslider').flexslider({
-            directionNav: false,
+            directionNav: true,
             pauseOnAction: false
         });
 
@@ -216,7 +236,7 @@
         function query() {
             var keyword = $('#SearchTxt').val();
             if ($.trim(keyword).length == 0) return alert("关键字不能为空");
-            window.location.href = "/search?keyword=" + escape(keyword);
+            window.open("/search?keyword=" + escape(keyword));
         }
 
 
@@ -229,7 +249,7 @@
         function marquee() {
             if (itemsSize > 6) {
                 var os = $('#customs-list>a').eq(cc).offset();
-                if (bos.left - os.left > (itemWidth-30)) {
+                if (bos.left - os.left > (itemWidth - 30)) {
                     $('#customs-list').append($('#customs-list>a').eq(cc++).prop("outerHTML"));
                 }
 

@@ -7,6 +7,9 @@
     <WebStackScaffolding_LayoutPageFile />
     <ProjectView>ShowAllFiles</ProjectView>
     <NameOfLastUsedPublishProfile>xbd</NameOfLastUsedPublishProfile>
+    <WebStackScaffolding_ControllerDialogWidth>600</WebStackScaffolding_ControllerDialogWidth>
+    <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
+    <UseIISExpress>true</UseIISExpress>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

@@ -9,16 +9,6 @@
 <link href="~/Scripts/case/css/owl.carousel.css" rel="stylesheet" />
 <link href="~/Scripts/case/css/custom.css" rel="stylesheet" />
 <script src="~/Scripts/case/js/owl.carousel.js"></script>
-<div hd-slide>
-    <div class="flexslider">
-        <ul class="slides">
-            <li style="background: url(/Scripts/slide/images/img1.jpg) 50% 0 no-repeat;"></li>
-            <li style="background: url(/Scripts/slide/images/img2.jpg) 50% 0 no-repeat;"></li>
-            <li style="background: url(/Scripts/slide/images/img3.jpg) 50% 0 no-repeat;"></li>
-        </ul>
-    </div>
-</div>
-<div hd-slide-line></div>
 <div class="container body-content">
     <table home-con>
         <tr>
@@ -29,9 +19,9 @@
                     @*<span orange>辛必达</span>成立于1999年，目前已为近千家国际知名企业提供过危险化学品经营许可证安全生产标准化、应急预案的咨询服务，其中包含<span red>阿克苏诺贝尔、沃尔沃、松下电器、海尔、三菱、大西电子、嘉盛石油、晟路化工、康德乐医药</span>等世界级知名企业。*@
                     @Html.Raw(w.Descript.Replace("辛必达", "<span orange>辛必达</span>").Replace("阿克苏诺贝尔、沃尔沃、松下电器、海尔、三菱、大西电子、嘉盛石油、晟路化工、康德乐医药", "<span red>阿克苏诺贝尔、沃尔沃、松下电器、海尔、三菱、大西电子、嘉盛石油、晟路化工、康德乐医药</span>"))
                     <div home-webinfo>
-                        地址：<span orange>@w.Address</span><br />
-                        咨询热线：<b orange style="font-size:14px;">@w.TelCall</b><br />
-                        应急电话：<b orange style="font-size:14px;">@(w.UserPhone1)、@w.UserPhone2</b>
+                        地址：<b red>@w.Address</b><br />
+                        咨询热线：<b red style="font-size:14px;">@w.TelCall</b><br />
+                        应急电话：<b red style="font-size:14px;">@(w.UserPhone1)、@w.UserPhone2</b>
                     </div>
                 </div>
             </td>
@@ -60,8 +50,8 @@
                         {
                             <li>
                                 <a href="/detail/@item.Id">
-                                    @(item.Name != null ? item.Name.Cuts(45) : "")
-                                <span>[@(item.AddTime.Value.Month)/@(item.AddTime.Value.Day)]</span>
+                                    @(item.Name != null ? item.Name.Cuts(52) : "")
+                                @*<span>[@(item.AddTime.Value.Month)/@(item.AddTime.Value.Day)]</span>*@
                             </a>
                         </li>
                         }

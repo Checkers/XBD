@@ -383,13 +383,14 @@
     <Content Include="Areas\Admin\Content\mac-Bootstrap\img\nopic.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\image\iconfont-phone.png" />
     <Content Include="Content\image\left.png" />
+    <Content Include="Content\image\lg.png" />
     <Content Include="Content\image\logo_160.png" />
     <Content Include="Content\image\logo_180.png" />
     <Content Include="Content\image\logo_large.png" />
     <Content Include="Content\image\logo_larger.png" />
     <Content Include="Content\image\right.png" />
-    <Content Include="Content\image\ss.JPG" />
     <Content Include="Content\image\custom.png" />
     <Content Include="Content\image\ewm.png" />
     <Content Include="Content\image\location.jpg" />
@@ -539,6 +540,7 @@
     <Content Include="Areas\Admin\Content\mac-Bootstrap\widgets3.html" />
     <Content Include="Content\image\left-pic.png" />
     <Content Include="Content\image\sh.png" />
+    <Content Include="Content\search.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\demo.css" />
     <Content Include="fonts\demo.html" />
@@ -689,6 +691,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\DoingBest\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XBD.Entity\XBD.Entity.csproj">

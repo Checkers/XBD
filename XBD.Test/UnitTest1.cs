@@ -21,7 +21,8 @@ namespace XBD.Test
                 EditTime = DateTime.Now,
                 Remark = "Default"
             };
-            //svc.Add(obj);
+            svc.Add(obj);
+            var list = svc.GetAll();
 
             //var res = svc.Check("admin", "admin1");
 
@@ -33,7 +34,7 @@ namespace XBD.Test
         public void TestMethod2()
         {
             var svc = new XBD.Service.NarcoticsSvc();
-            var filePath = AppDomain.CurrentDomain.BaseDirectory + "/Files/危险化学品名录统计表2.xls";
+            var filePath = AppDomain.CurrentDomain.BaseDirectory + "/Files/危险化学品名录统计表3.xls";
             var dt = ExcelTool.ToDataTable(filePath);
             svc.AddAll(dt);
 

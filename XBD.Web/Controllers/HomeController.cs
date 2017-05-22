@@ -16,13 +16,14 @@ namespace XBD.Web.Controllers
         // GET: Home
         ArticleSvc svc = new ArticleSvc();
         CategorySvc cateSvc = new CategorySvc();
+
         NarcoticsSvc narSvc = new NarcoticsSvc();
         CaseSvc cs = new CaseSvc();
 
         public ActionResult Index()
         {
-            ViewData["List9"] = svc.PageListByCode(1, 9, base.webTypeCode).Rows;
-            ViewData["caseList"] = new CaseSvc().PageList(1, 5, webTypeCode);
+            ViewData["List9"] = svc.PageListByCode(1, 9, base.webTypeCode, "d_zcfg").Rows;
+            ViewData["caseList"] = new CaseSvc().PageList(1, 9, webTypeCode);
             return View();
         }
 
@@ -86,5 +87,12 @@ namespace XBD.Web.Controllers
         {
             return Json(cs.GetCidList(id));
         }
+
+        public ActionResult DoingBest()
+        {
+            var urlFromConfig = System.Configuration.ConfigurationManager.AppSettings["redirect"];
+            return Redirect(urlFromConfig);
+        }
+
     }
 }

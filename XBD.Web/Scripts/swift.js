@@ -5,7 +5,7 @@
         var retVal;
         if (typeof (attach) != "undefined") objs = attach;
         $(this).find("*[name]").each(function () {
-            objs[$(this).attr("name")] = $(this).val().replace(/[\']/g, "&apos;").replace(/[\"]/g, "&quot;");
+            objs[$(this).attr("name")] = $(this).val();
         });
         $.ajax({ url: destUrl, type: "post", data: objs, async: false, success: function (d) { retVal = d; } });
         if (callback) { callback(retVal); }

@@ -51,6 +51,8 @@ namespace XBD.Service
                     return new DataResult<string> { Code = -1, Data = "标题不能为空" };
                 if (string.IsNullOrEmpty(art.Content))
                     return new DataResult<string> { Code = -1, Data = "内容不能为空" };
+                if (string.IsNullOrEmpty(art.Description))
+                    return new DataResult<string> { Code = -1, Data = "摘要不能为空" };
                 if (art.Description.Length>400)
                     return new DataResult<string> { Code = -1, Data = "摘要太长了" };
                 if ((!string.IsNullOrEmpty(art.KeyWord))&&art.KeyWord.Length > 200)
@@ -75,6 +77,8 @@ namespace XBD.Service
                     return new DataResult<string> { Code = -1, Data = "标题不能为空" };
                 if (string.IsNullOrEmpty(art.Content))
                     return new DataResult<string> { Code = -1, Data = "内容不能为空" };
+                if (string.IsNullOrEmpty(art.Description))
+                    return new DataResult<string> { Code = -1, Data = "摘要不能为空" };
                 if (art.Description.Length > 400)
                     return new DataResult<string> { Code = -1, Data = "摘要太长了" };
                 if ((!string.IsNullOrEmpty(art.KeyWord)) && art.KeyWord.Length > 200)

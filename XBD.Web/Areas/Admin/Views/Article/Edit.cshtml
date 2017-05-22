@@ -70,7 +70,7 @@
                                 <div class="form-group">
                                     <label class="col-lg-4 control-label">资讯内容</label>
                                     <div class="col-lg-8">
-                                        <script type="text/plain" id="Content" style="width:695px;height:240px;">@(Html.Raw(m.Content.Replace("&quot;", "\"").Replace("&apos;","'")))</script>
+                                        <script type="text/plain" id="Content" style="width:695px;height:240px;">@(Html.Raw(m.Content))</script>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -166,7 +166,7 @@
 
     function submit() {
         var attach = {
-            Content: UE.getEditor('Content').getContent().replace(/[\']/g, "&apos;").replace(/[\"]/g, "&quot")
+            Content: UE.getEditor('Content').getContent()
         };
 
         $('#addArt').go(function (data) {

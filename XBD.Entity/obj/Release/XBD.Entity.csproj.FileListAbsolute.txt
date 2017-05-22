@@ -11,3 +11,17 @@ D:\Projects\XBD\XBD.Entity\bin\Release\System.Web.WebPages.Deployment.dll
 D:\Projects\XBD\XBD.Entity\obj\Release\XBD.Entity.csprojResolveAssemblyReference.cache
 D:\Projects\XBD\XBD.Entity\obj\Release\XBD.Entity.dll
 D:\Projects\XBD\XBD.Entity\obj\Release\XBD.Entity.pdb
+E:\GitHub\XBD\XBD.Entity\bin\Release\XBD.Entity.dll
+E:\GitHub\XBD\XBD.Entity\bin\Release\XBD.Entity.pdb
+E:\GitHub\XBD\XBD.Entity\bin\Release\EntityFramework.dll
+E:\GitHub\XBD\XBD.Entity\bin\Release\Newtonsoft.Json.dll
+E:\GitHub\XBD\XBD.Entity\bin\Release\Swift.Net.dll
+E:\GitHub\XBD\XBD.Entity\bin\Release\System.Web.Mvc.dll
+E:\GitHub\XBD\XBD.Entity\bin\Release\System.Web.Razor.dll
+E:\GitHub\XBD\XBD.Entity\bin\Release\System.Web.WebPages.Razor.dll
+E:\GitHub\XBD\XBD.Entity\bin\Release\System.Web.WebPages.dll
+E:\GitHub\XBD\XBD.Entity\bin\Release\Microsoft.Web.Infrastructure.dll
+E:\GitHub\XBD\XBD.Entity\bin\Release\System.Web.WebPages.Deployment.dll
+E:\GitHub\XBD\XBD.Entity\obj\Release\XBD.Entity.csprojResolveAssemblyReference.cache
+E:\GitHub\XBD\XBD.Entity\obj\Release\XBD.Entity.dll
+E:\GitHub\XBD\XBD.Entity\obj\Release\XBD.Entity.pdb

@@ -7,21 +7,22 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; 
+minimum-scale=1.0; maximum-scale=1.0; user-scalable=no;" />
     <title>危险化学品查询 - 辛必达</title>
-    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/search.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 </head>
 <body>
     <div search-header>
         <input id="keyword" search-box />
-        <a search-commit onclick="query()">查询</a>
+        <input type="button" search-commit onclick="query()" value="查询" />
     </div>
     <div search-content>
         @{
             if (list.Count == 0)
             {
-                <p style="text-align:center; font-size:2vw;">对不起，没有相关信息</p>
+                <p style="text-align:center;">对不起，没有相关信息</p>
             }
             else
             {

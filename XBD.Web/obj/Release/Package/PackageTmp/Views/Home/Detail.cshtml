@@ -9,17 +9,6 @@
     ViewBag.Title = m.Name;
 }
 
-
-<div hd-slide>
-    <div class="flexslider">
-        <ul class="slides">
-            <li style="background: url(/Scripts/slide/images/img1.jpg) 50% 0 no-repeat;"></li>
-            <li style="background: url(/Scripts/slide/images/img2.jpg) 50% 0 no-repeat;"></li>
-            <li style="background: url(/Scripts/slide/images/img3.jpg) 50% 0 no-repeat;"></li>
-        </ul>
-    </div>
-</div>
-<div hd-slide-line></div>
 <div class="container body-content">
     <div class="row" style="margin-top:10px;">
        @Html.Partial("PartalList")
@@ -27,7 +16,7 @@
         <div class="col-lg-8" com-right>
             <div detail-main>
                 <div detail-title>@m.Name</div>
-                <div detail-time>发布日期：@m.AddTime.Value.ToString("yyyy-MM-dd") </div>
+                <div detail-time><span style="display:none;">发布日期：@m.AddTime.Value.ToString("yyyy-MM-dd") </span></div>
                 <div detail-content>
                     @Html.Raw(m.Content.Replace("&quot", "\""))
                 </div>
