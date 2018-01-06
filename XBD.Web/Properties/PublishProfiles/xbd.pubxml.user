@@ -1297,10 +1297,10 @@
       <publishTime>03/19/2016 21:45:06</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Article/Add.cshtml">
-      <publishTime>04/03/2016 20:47:26</publishTime>
+      <publishTime>04/04/2016 18:27:15</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Article/Edit.cshtml">
-      <publishTime>04/03/2016 20:54:08</publishTime>
+      <publishTime>04/04/2016 18:27:05</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Article/Index.cshtml">
       <publishTime>03/19/2016 21:45:06</publishTime>
@@ -1324,7 +1324,7 @@
       <publishTime>03/19/2016 21:45:06</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Config/Index.cshtml">
-      <publishTime>03/19/2016 21:45:06</publishTime>
+      <publishTime>01/06/2018 18:58:31</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Customer/Add.cshtml">
       <publishTime>03/19/2016 21:45:06</publishTime>
@@ -1426,16 +1426,16 @@
       <publishTime>03/19/2016 23:02:04</publishTime>
     </File>
     <File Include="bin/XBD.Entity.dll">
-      <publishTime>03/29/2016 21:53:26</publishTime>
+      <publishTime>01/06/2018 19:14:16</publishTime>
     </File>
     <File Include="bin/XBD.Repository.dll">
-      <publishTime>03/29/2016 21:53:26</publishTime>
+      <publishTime>01/06/2018 19:14:16</publishTime>
     </File>
     <File Include="bin/XBD.Service.dll">
-      <publishTime>04/03/2016 20:59:24</publishTime>
+      <publishTime>01/06/2018 19:14:16</publishTime>
     </File>
     <File Include="bin/XBD.Web.dll">
-      <publishTime>04/03/2016 21:00:27</publishTime>
+      <publishTime>01/06/2018 19:14:19</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
       <publishTime>03/19/2016 21:45:07</publishTime>
@@ -1462,7 +1462,7 @@
       <publishTime>03/19/2016 21:45:07</publishTime>
     </File>
     <File Include="Content/image/logo.png">
-      <publishTime>03/19/2016 21:45:07</publishTime>
+      <publishTime>05/14/2016 12:50:36</publishTime>
     </File>
     <File Include="Content/image/logo_160.png">
       <publishTime>03/19/2016 21:45:07</publishTime>
@@ -1489,7 +1489,7 @@
       <publishTime>04/03/2016 20:10:13</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>04/03/2016 20:40:09</publishTime>
+      <publishTime>05/21/2016 18:11:20</publishTime>
     </File>
     <File Include="fonts/demo.css">
       <publishTime>03/19/2016 21:45:07</publishTime>
@@ -1623,6 +1623,9 @@
     <File Include="Scripts/slide/images/dot.png">
       <publishTime>03/19/2016 21:45:07</publishTime>
     </File>
+    <File Include="Scripts/slide/images/img0.jpg">
+      <publishTime>01/06/2018 18:42:12</publishTime>
+    </File>
     <File Include="Scripts/slide/images/img1.jpg">
       <publishTime>03/19/2016 21:45:07</publishTime>
     </File>
@@ -1654,7 +1657,7 @@
       <publishTime>04/03/2016 20:46:41</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
-      <publishTime>03/31/2016 20:17:15</publishTime>
+      <publishTime>01/06/2018 19:11:51</publishTime>
     </File>
     <File Include="Views/Home/Case.cshtml">
       <publishTime>03/29/2016 21:19:49</publishTime>
@@ -1678,16 +1681,16 @@
       <publishTime>04/03/2016 19:59:54</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>04/03/2016 19:25:11</publishTime>
+      <publishTime>01/06/2018 18:42:26</publishTime>
     </File>
     <File Include="Views/web.config">
-      <publishTime>03/19/2016 21:45:07</publishTime>
+      <publishTime>05/22/2017 21:27:14</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>03/19/2016 21:45:07</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/20/2016 22:54:35</publishTime>
+      <publishTime>05/22/2017 22:06:50</publishTime>
     </File>
   </ItemGroup>
 </Project>

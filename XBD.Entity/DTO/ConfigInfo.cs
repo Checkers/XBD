@@ -28,6 +28,7 @@ namespace XBD.Entity
         public string TelCall { get; set; }
 
         public string Descript { get; set; }
+        public string About{ get; set; }
 
         public string CopyRight { get; set; }
         public string QRCode { get; set; }
