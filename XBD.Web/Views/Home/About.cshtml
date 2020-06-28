@@ -24,8 +24,15 @@
                 <p cate-about-us-title>联系方式</p>
                 <p cate-about-us-content>
                     手机：@w.UserPhone1 、@w.UserPhone2<br />
-                    电话：@w.TelCall.Split('、')[1]<br />
-                    全国：@w.TelCall.Split('、')[0]<br />
+                    @if (w.TelCall.Split('、').Length > 1)
+                    {
+                        @(w.TelCall.Split('、').Length > 1 ? " 电话："+w.TelCall.Split('、')[1] : "")<br />
+                    }
+
+                    @if (w.TelCall.Split('、').Length >0)
+                    {
+                        @(w.TelCall.Split('、').Length > 0 ? " 座机：" + w.TelCall.Split('、')[0] : "")<br />
+                    }
                     QQ号：@w.QQ<br />
                     邮箱：@(w.Email)<br />
                     地址：@w.Address

@@ -77,7 +77,6 @@ D:\GitHub\XBD\XBD.Service\bin\Debug\Microsoft.Web.Infrastructure.dll
 D:\GitHub\XBD\XBD.Service\bin\Debug\System.Web.WebPages.Deployment.dll
 D:\GitHub\XBD\XBD.Service\bin\Debug\XBD.Entity.pdb
 D:\GitHub\XBD\XBD.Service\bin\Debug\XBD.Repository.pdb
-D:\GitHub\XBD\XBD.Service\obj\Debug\XBD.Service.csprojResolveAssemblyReference.cache
 D:\GitHub\XBD\XBD.Service\obj\Debug\XBD.Service.dll
 D:\GitHub\XBD\XBD.Service\obj\Debug\XBD.Service.pdb
 E:\GitHub\XBD\XBD.Service\bin\Debug\XBD.Service.dll
@@ -98,3 +97,6 @@ E:\GitHub\XBD\XBD.Service\bin\Debug\XBD.Repository.pdb
 E:\GitHub\XBD\XBD.Service\obj\Debug\XBD.Service.csprojResolveAssemblyReference.cache
 E:\GitHub\XBD\XBD.Service\obj\Debug\XBD.Service.dll
 E:\GitHub\XBD\XBD.Service\obj\Debug\XBD.Service.pdb
+D:\GitHub\XBD\XBD.Service\obj\Debug\XBD.Service.csprojAssemblyReference.cache
+D:\GitHub\XBD\XBD.Service\obj\Debug\XBD.Service.csproj.CoreCompileInputs.cache
+D:\GitHub\XBD\XBD.Service\obj\Debug\XBD.Service.csproj.CopyComplete

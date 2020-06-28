@@ -45,10 +45,10 @@
 
                 <div id="pager" data-list-pager>
                     <a onclick="pager.prev()" href="javascript:void(0);">上一页</a>
-                    @for (var i = 1; i <= (int)Math.Ceiling(list.Total / 4.0); i++)
+                    @*@for (var i = 1; i <= (int)Math.Ceiling(list.Total / 4.0); i++)
                     {
                         <a href="javascript:void(0);" tag="@i" onclick="pager.page(@i)">@i</a>
-                    }
+                    }*@
                     <a onclick="pager.next()" href="javascript:void(0);">下一页</a>
                     <span>共@(list.Total)条</span>
                 </div>

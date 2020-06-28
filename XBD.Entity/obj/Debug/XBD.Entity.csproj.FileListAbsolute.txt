@@ -50,3 +50,6 @@ E:\GitHub\XBD\XBD.Entity\bin\Debug\System.Web.WebPages.Deployment.dll
 E:\GitHub\XBD\XBD.Entity\obj\Debug\XBD.Entity.dll
 E:\GitHub\XBD\XBD.Entity\obj\Debug\XBD.Entity.pdb
 E:\GitHub\XBD\XBD.Entity\obj\Debug\XBD.Entity.csprojResolveAssemblyReference.cache
+D:\GitHub\XBD\XBD.Entity\obj\Debug\XBD.Entity.csprojAssemblyReference.cache
+D:\GitHub\XBD\XBD.Entity\obj\Debug\XBD.Entity.csproj.CoreCompileInputs.cache
+D:\GitHub\XBD\XBD.Entity\obj\Debug\XBD.Entity.csproj.CopyComplete

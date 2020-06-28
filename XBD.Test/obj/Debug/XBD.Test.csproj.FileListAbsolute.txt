@@ -101,7 +101,6 @@ D:\GitHub\XBD\XBD.Test\bin\Debug\Spire.Pdf.xml
 D:\GitHub\XBD\XBD.Test\bin\Debug\Spire.XLS.xml
 D:\GitHub\XBD\XBD.Test\bin\Debug\XBD.Repository.pdb
 D:\GitHub\XBD\XBD.Test\bin\Debug\zh-Hans\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
-D:\GitHub\XBD\XBD.Test\obj\Debug\XBD.Test.csprojResolveAssemblyReference.cache
 D:\GitHub\XBD\XBD.Test\obj\Debug\XBD.Test.dll
 D:\GitHub\XBD\XBD.Test\obj\Debug\XBD.Test.pdb
 E:\GitHub\XBD\XBD.Test\bin\Debug\Files\危险化学品名录统计表.xls
@@ -140,3 +139,7 @@ E:\GitHub\XBD\XBD.Test\obj\Debug\XBD.Test.csprojResolveAssemblyReference.cache
 E:\GitHub\XBD\XBD.Test\obj\Debug\XBD.Test.dll
 E:\GitHub\XBD\XBD.Test\obj\Debug\XBD.Test.pdb
 E:\GitHub\XBD\XBD.Test\bin\Debug\Files\危险化学品名录统计表3.xls
+D:\GitHub\XBD\XBD.Test\bin\Debug\Files\危险化学品名录统计表3.xls
+D:\GitHub\XBD\XBD.Test\obj\Debug\XBD.Test.csprojAssemblyReference.cache
+D:\GitHub\XBD\XBD.Test\obj\Debug\XBD.Test.csproj.CoreCompileInputs.cache
+D:\GitHub\XBD\XBD.Test\obj\Debug\XBD.Test.csproj.CopyComplete
