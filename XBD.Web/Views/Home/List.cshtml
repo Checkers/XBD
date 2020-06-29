@@ -6,6 +6,7 @@
     ViewBag.Description = ViewData["ListDes"] + "";
     var w = XBD.Web.Utilities.WebInfo.GetWebInfo();
     var list = ViewData["List"] as PaginationResult<ArticleDTO>;
+    var pn = ViewData["PList"] as List<int>;
 
     var conf = System.Configuration.ConfigurationManager.AppSettings["WebTypeCode"];
     var listNav = new XBD.Service.CategorySvc().GetWebTypeByCodeName(conf).Take(6);
@@ -45,10 +46,10 @@
 
                 <div id="pager" data-list-pager>
                     <a onclick="pager.prev()" href="javascript:void(0);">上一页</a>
-                    @*@for (var i = 1; i <= (int)Math.Ceiling(list.Total / 4.0); i++)
+                    @foreach (var i in pn)
                     {
                         <a href="javascript:void(0);" tag="@i" onclick="pager.page(@i)">@i</a>
-                    }*@
+                    }
                     <a onclick="pager.next()" href="javascript:void(0);">下一页</a>
                     <span>共@(list.Total)条</span>
                 </div>

@@ -29,11 +29,13 @@ namespace XBD.Web.Controllers
 
         public ActionResult List(string id, int page = 1)
         {
-            ViewData["List"] = svc.PageListByCode(page, 4, base.webTypeCode, id);
+            var list = svc.PageListByCode(page, 4, base.webTypeCode, id);
+            ViewData["List"] = list;
             var cate = cateSvc.GetByCode(id);
             ViewData["ListName"] = cate.Name;
             ViewData["ListDes"] = cate.Remark;
             ViewData["KeyWord"] = cate.KeyWord;
+            ViewData["PList"] = GetPageNumList(page, list.Total, 4);
             return View();
         }
 
@@ -45,7 +47,9 @@ namespace XBD.Web.Controllers
 
         public ActionResult Case(int page = 1)
         {
-            ViewData["model"] = new CaseSvc().PageList(page, 9, webTypeCode);
+            var list = new CaseSvc().PageList(page, 9, webTypeCode);
+            ViewData["PList"] = GetPageNumList(page, list.Total, 9);
+            ViewData["model"] = list;
             return View();
         }
 
