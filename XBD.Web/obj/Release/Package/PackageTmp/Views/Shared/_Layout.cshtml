@@ -24,7 +24,7 @@
         <div class="container hd-container">
             <a hd-logo href="/"></a>
             <div hd-search>
-                <div>
+                <div style="display: inline-block; vertical-align: middle;">
                     <input id="SearchTxt" placeholder="危险化学品查询" hd-searchbox />
                     <span hd-searchbtn onclick="query()" class="glyphicon glyphicon-search"></span>
                 </div>
@@ -32,12 +32,14 @@
                     <span class="glyphicon glyphicon-earphone"></span> @w.TelCall.Split('、')[0]
                 </div>
             </div>
-            <ul hd-nav>
+            <div hd-nav>
                 @foreach (var item in list)
                 {
-                    <li><a href="@item.Link">@item.Name</a></li>
+                    <div menu-item><a href="@item.Link">@item.Name</a></div>
                 }
-            </ul>
+            </div>
+
+            <div cs-cgal>成 功 案 例</div>
         </div>
     </header>
     @if (ViewBag.IsSlide != true)
@@ -63,7 +65,7 @@
     @RenderBody()
     <div our-custom>
         <div class="container" style="overflow:hidden;">
-            <div home-title>我们的客户 & Customs</div>
+            <div home-title>我们的客户</div>
             <div customs-div id="customs-list">
                 @foreach (var item in listCus.Rows)
                 {

@@ -1426,16 +1426,28 @@
       <publishTime>03/19/2016 23:02:04</publishTime>
     </File>
     <File Include="bin/XBD.Entity.dll">
-      <publishTime>01/06/2018 19:14:16</publishTime>
+      <publishTime>02/19/2021 02:00:31</publishTime>
+    </File>
+    <File Include="bin/XBD.Entity.pdb">
+      <publishTime>02/19/2021 02:00:31</publishTime>
     </File>
     <File Include="bin/XBD.Repository.dll">
-      <publishTime>01/06/2018 19:14:16</publishTime>
+      <publishTime>02/19/2021 02:00:32</publishTime>
+    </File>
+    <File Include="bin/XBD.Repository.pdb">
+      <publishTime>02/19/2021 02:00:32</publishTime>
     </File>
     <File Include="bin/XBD.Service.dll">
-      <publishTime>01/06/2018 19:14:16</publishTime>
+      <publishTime>02/19/2021 02:00:32</publishTime>
+    </File>
+    <File Include="bin/XBD.Service.pdb">
+      <publishTime>02/19/2021 02:00:32</publishTime>
     </File>
     <File Include="bin/XBD.Web.dll">
-      <publishTime>01/06/2018 19:14:19</publishTime>
+      <publishTime>02/19/2021 02:00:38</publishTime>
+    </File>
+    <File Include="bin/XBD.Web.pdb">
+      <publishTime>02/19/2021 02:00:38</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
       <publishTime>03/19/2016 21:45:07</publishTime>
@@ -1489,7 +1501,7 @@
       <publishTime>04/03/2016 20:10:13</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>05/21/2016 18:11:20</publishTime>
+      <publishTime>02/18/2021 23:12:40</publishTime>
     </File>
     <File Include="fonts/demo.css">
       <publishTime>03/19/2016 21:45:07</publishTime>
@@ -1624,16 +1636,16 @@
       <publishTime>03/19/2016 21:45:07</publishTime>
     </File>
     <File Include="Scripts/slide/images/img0.jpg">
-      <publishTime>01/06/2018 18:42:12</publishTime>
+      <publishTime>06/27/2020 19:00:52</publishTime>
     </File>
     <File Include="Scripts/slide/images/img1.jpg">
-      <publishTime>03/19/2016 21:45:07</publishTime>
+      <publishTime>06/27/2020 19:00:52</publishTime>
     </File>
     <File Include="Scripts/slide/images/img2.jpg">
-      <publishTime>03/19/2016 21:45:07</publishTime>
+      <publishTime>06/27/2020 19:00:54</publishTime>
     </File>
     <File Include="Scripts/slide/images/img3.jpg">
-      <publishTime>03/19/2016 21:45:07</publishTime>
+      <publishTime>06/27/2020 19:00:54</publishTime>
     </File>
     <File Include="Scripts/slide/images/img4.jpg">
       <publishTime>03/19/2016 21:45:07</publishTime>
@@ -1657,10 +1669,10 @@
       <publishTime>04/03/2016 20:46:41</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
-      <publishTime>01/06/2018 19:11:51</publishTime>
+      <publishTime>06/29/2020 03:01:22</publishTime>
     </File>
     <File Include="Views/Home/Case.cshtml">
-      <publishTime>03/29/2016 21:19:49</publishTime>
+      <publishTime>02/16/2021 18:34:45</publishTime>
     </File>
     <File Include="Views/Home/Detail.cshtml">
       <publishTime>04/03/2016 20:24:59</publishTime>
@@ -1669,19 +1681,19 @@
       <publishTime>12/20/2015 20:58:18</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>04/03/2016 19:20:56</publishTime>
+      <publishTime>02/16/2021 18:40:07</publishTime>
     </File>
     <File Include="Views/Home/List.cshtml">
-      <publishTime>03/29/2016 21:19:56</publishTime>
+      <publishTime>02/16/2021 18:34:45</publishTime>
     </File>
     <File Include="Views/Home/PartalList.cshtml">
-      <publishTime>02/27/2016 12:54:15</publishTime>
+      <publishTime>02/16/2021 20:36:25</publishTime>
     </File>
     <File Include="Views/Home/Search.cshtml">
-      <publishTime>04/03/2016 19:59:54</publishTime>
+      <publishTime>02/16/2021 18:56:41</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>01/06/2018 18:42:26</publishTime>
+      <publishTime>02/18/2021 23:32:30</publishTime>
     </File>
     <File Include="Views/web.config">
       <publishTime>05/22/2017 21:27:14</publishTime>
@@ -1690,7 +1702,7 @@
       <publishTime>03/19/2016 21:45:07</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/22/2017 22:06:50</publishTime>
+      <publishTime>02/19/2021 02:00:40</publishTime>
     </File>
   </ItemGroup>
 </Project>
