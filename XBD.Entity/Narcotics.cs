@@ -28,5 +28,9 @@ namespace XBD.Entity
         /// CAS号
         /// </summary>
         public string CASNo { set; get; }
+
+        public string NumId { set; get; }
+        public string NCate { set; get; }
+        public string NType { set; get; }
     }
 }

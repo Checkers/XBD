@@ -10,7 +10,7 @@
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    max-width: 1100px;
+    max-width: 1300px;
 }
 
 input, select, textarea {
@@ -85,9 +85,10 @@ header, #footer {
 
 [hd-contact] {
     color: #e4ae3e;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
-    margin-top: 5px;
+    vertical-align: middle;
+    display: inline-block;
 }
 
 
@@ -99,24 +100,28 @@ header, #footer {
 [hd-nav] {
     list-style-type: none;
     position: absolute;
-    right: 15px;
-    bottom: -5px;
+    bottom: 5px;
+    left: 220px;
+    right: 100px;
+    text-align: right;
 }
 
-    [hd-nav] li {
+
+    [hd-nav] [menu-item] {
         color: #c0c0c0;
-        margin-left: 20px;
-        float: left;
+        margin-top: 5px;
+        display: inline-block;
+        margin-left: 30px;
     }
 
-        [hd-nav] li a {
+        [hd-nav] [menu-item] a {
             color: #888;
             text-decoration: none;
             font-size: 15px;
             font-family: "微软雅黑";
         }
 
-            [hd-nav] li a:hover {
+            [hd-nav] [menu-item] a:hover {
                 color: orange;
             }
 
@@ -368,7 +373,8 @@ header, #footer {
 }
 
 [com-left-item='3'], [com-left-item='3']:hover {
-    height: 60px;
+    height: 65px;
+    line-height: 60px;
     border: 1px solid #fff;
     background-color: rgb(26,188,156);
     color: #fff;
@@ -376,7 +382,8 @@ header, #footer {
 }
 
 [com-left-item='4'], [com-left-item='4']:hover {
-    height: 60px;
+    height: 65px;
+    line-height: 60px;
     border: 1px solid #fff;
     background-color: rgb(155,89,182);
     color: #fff;
@@ -384,7 +391,8 @@ header, #footer {
 }
 
 [com-left-item='5'], [com-left-item='5']:hover {
-    height: 60px;
+    height: 65px;
+    line-height: 60px;
     border: 1px solid #fff;
     background-color: rgb(52,152,219);
     color: #fff;
@@ -392,7 +400,8 @@ header, #footer {
 }
 
 [com-left-item='6'], [com-left-item='6']:hover {
-    height: 60px;
+    height: 65px;
+    line-height: 60px;
     border: 1px solid #fff;
     background-color: rgb(214,196,15);
     color: #fff;
@@ -400,7 +409,8 @@ header, #footer {
 }
 
 [com-left-item='7'], [com-left-item='7']:hover {
-    height: 60px;
+    height: 65px;
+    line-height: 60px;
     border: 1px solid #fff;
     background-color: rgb(46,204,113);
     color: #fff;
@@ -408,9 +418,37 @@ header, #footer {
 }
 
 [com-left-item='8'], [com-left-item='8']:hover {
-    height: 60px;
+    height: 65px;
+    line-height: 60px;
     border: 1px solid #fff;
     background-color: rgb(231,76,60);
+    color: #fff;
+    text-decoration: none;
+}
+
+[com-left-item='9'], [com-left-item='9']:hover {
+    height: 65px;
+    line-height: 60px;
+    border: 1px solid #fff;
+    background-color: rgb(58,60, 119);
+    color: #fff;
+    text-decoration: none;
+}
+
+[com-left-item='10'], [com-left-item='10']:hover {
+    height: 65px;
+    line-height: 60px;
+    border: 1px solid #fff;
+    background-color: rgb(120,196,236);
+    color: #fff;
+    text-decoration: none;
+}
+
+[com-left-item='11'], [com-left-item='11']:hover {
+    height: 65px;
+    line-height: 60px;
+    border: 1px solid #fff;
+    background-color: rgb(250,180,96);
     color: #fff;
     text-decoration: none;
 }
@@ -501,7 +539,7 @@ header, #footer {
 
     [data-list-item] [data-list-date] {
         font-size: 12px;
-        display:none;
+        display: none;
     }
 
 [data-list-pager] {
@@ -823,13 +861,13 @@ header, #footer {
     position: relative;
     width: 100%;
     height: 100%;
-    overflow:hidden;
+    overflow: hidden;
 }
 
     [jimgviewer2-c] img {
         width: 100%;
         height: 100%;
-        cursor:pointer;
+        cursor: pointer;
     }
 
 [jimgviewer2-close] {
@@ -889,4 +927,18 @@ header, #footer {
     z-index: 9994;
     opacity: 0.7;
     display: none;
+}
+
+
+
+[cs-cgal] {
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+    width: 70px;
+    font-size: 18px;
+    background: #e4ae3e;
+    text-align: center;
+    border-radius: 3px;
+    color: #fff;
 }

@@ -12,11 +12,9 @@ namespace XBD.Repository
     {
         public List<Narcotics> GetList(string keyword)
         {
-            var sql = string.Format(@"select nr.[Id],nr.Name,nr.[SubName],nr.CASNo,nr.[AddTime],nr.[EditTime],nr.[Remark],nr.[Enable]
-                                    from Narcotics nr where CASNo='{0}' or Name='{0}' or SubName='{0}'", keyword);
+            var sql = string.Format(@"select * from Narcotics nr where CASNo='{0}' or Name='{0}' or SubName='{0}'", keyword);
 
-            var sql2 = string.Format(@"select nr.[Id],nr.Name,nr.[SubName],nr.CASNo,nr.[AddTime],nr.[EditTime],nr.[Remark],nr.[Enable]
-                                    from Narcotics nr where (CASNo like '%{0}%' or Name like '%{0}%' or SubName like '%{0}%') 
+            var sql2 = string.Format(@"select * from Narcotics nr where (CASNo like '%{0}%' or Name like '%{0}%' or SubName like '%{0}%') 
                                     and CASNo!='{0}' and Name!='{0}' and SubName!='{0}'", keyword);
             var list = this.EfContext.Database.SqlQuery<Narcotics>(sql);
             var list2 = this.EfContext.Database.SqlQuery<Narcotics>(sql2);

@@ -28,10 +28,10 @@ namespace XBD.Service
         //获取当前网站下的所有分类
         public List<Category> GetWebTypeByCodeName(string codeName)
         {
-            var parent = GetAll().FirstOrDefault(t => t.CodeName == codeName);
+            var parent = GetAll().FirstOrDefault(t => t.CodeName == codeName && t.Enable);
             var res = GetWebType(parent.Id);
             if (res == null || res.Rows == null) return new List<Category>();
-            return res.Rows.OrderBy(t => t.Sort).ToList();
+            return res.Rows.Where(t=>t.Enable).OrderBy(t => t.Sort).ToList();
         }
 
         //根据网站类型获取网站目录分类

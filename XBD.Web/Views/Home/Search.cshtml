@@ -28,12 +28,17 @@ minimum-scale=1.0; maximum-scale=1.0; user-scalable=no;" />
             {
                 foreach (var item in list)
                 {
-                    <div search-content-item>
-                        <h3>@item.Name</h3>
-                        <p>别名：@item.SubName</p>
-                        <p>CAS号：@item.CASNo</p>
-                        <p>@item.Remark</p>
-                    </div>
+    <div search-content-item>
+        @*<h3>@item.Name</h3>*@
+        <p>序号：@item.NumId</p>
+        <p>品名：@item.Name</p>
+        <p>别名：@item.SubName</p>
+        <p>CAS号：@item.CASNo</p>
+        <p>分类：@item.NCate</p>
+        <p>类型：@item.NType</p>
+
+        @*<p>@item.Remark</p>*@
+    </div>
                 }
             }}
     </div>
