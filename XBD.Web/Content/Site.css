@@ -101,7 +101,7 @@ header, #footer {
     list-style-type: none;
     position: absolute;
     bottom: 5px;
-    left: 220px;
+    left: 100px;
     right: 100px;
     text-align: right;
 }
@@ -112,7 +112,7 @@ header, #footer {
         margin-top: 5px;
         display: inline-block;
         /*margin-left: 30px;*/
-        width: 140px;
+        width: 120px;
         text-align: center;
     }
 
