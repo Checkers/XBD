@@ -1,7 +1,7 @@
 ﻿@{
     var conf = System.Configuration.ConfigurationManager.AppSettings["WebTypeCode"];
     var w = XBD.Web.Utilities.WebInfo.GetWebInfo();
-    var listNav = new XBD.Service.CategorySvc().GetWebTypeByCodeName(conf).Where(t=>t.Name != "首页" && t.Name!= "成功案例").Take(10);
+    var listNav = new XBD.Service.CategorySvc().GetWebTypeByCodeName(conf).Where(t=>t.Name != "首页" ).Take(9);
 }
 <div class="col-lg-4" com-left>
 

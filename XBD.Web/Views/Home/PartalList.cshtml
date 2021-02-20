@@ -1,17 +1,20 @@
 ﻿@{
     var conf = System.Configuration.ConfigurationManager.AppSettings["WebTypeCode"];
     var w = XBD.Web.Utilities.WebInfo.GetWebInfo();
-    var listNav = new XBD.Service.CategorySvc().GetWebTypeByCodeName(conf).Where(t=>t.Name != "首页" && t.Name!= "成功案例").Take(10);
+    var listNav = new XBD.Service.CategorySvc().GetWebTypeByCodeName(conf).Where(t=>t.Name != "首页" ).Take(9);
 }
 <div class="col-lg-4" com-left>
 
-    <div  com-left-item>
+    <div com-left-item>
         @{var index = 3;}
         @foreach (var item in listNav)
         {
-            
+
             <a href="@item.Link" class="col-lg-4" com-left-item="@(index++)">@item.Name</a>
         }
+        <a href="/list/d_zcfg" class="col-lg-4" com-left-item="10">最新咨询</a>
+        <a href="/case" class="col-lg-4" com-left-item="11">成功案例</a>
+
         @*<a href="/about" class="col-lg-6" com-left-item="66">联系我们</a>*@
     </div>
     <div about-us>
