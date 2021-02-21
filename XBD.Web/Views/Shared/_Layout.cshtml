@@ -28,9 +28,9 @@
                     <input id="SearchTxt" placeholder="危险化学品查询" hd-searchbox />
                     <span hd-searchbtn onclick="query()" class="glyphicon glyphicon-search"></span>
                 </div>
-                <div hd-contact>
-                    <span class="glyphicon glyphicon-earphone"></span> @w.TelCall.Split('、')[0]
-                </div>
+            </div>
+            <div hd-contact style=" position: absolute; right: 100px; top: 45px;">
+                <span class="glyphicon glyphicon-earphone"></span> @w.TelCall.Split('、')[0]
             </div>
             <div hd-nav>
                 @foreach (var item in list)
